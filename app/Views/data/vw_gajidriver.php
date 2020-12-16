@@ -28,7 +28,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <input id="tgl_gaji" placeholder="Tanggal Gaji" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
+                                    <input id="tgl_gaji" placeholder="Bulan Gaji" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
                                 </div>
                                 <div class="col-md">
                                     <button type="button" id="btn-filter" class="btn btn-info btn-sm">Tampilkan</button>
@@ -43,7 +43,7 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>SJ KEMBALI</th>
-                                        <th>TGL GAJI</th>
+                                        <th>BULAN GAJI</th>
                                         <th>DELIVERY</th>
                                         <th>NOPOL</th>
                                         <th>PRODUK</th>
@@ -107,8 +107,11 @@
         table.ajax.reload(null, false);
     }
     $('.tanggal').datepicker({
-        autoclose: true,
-        format: "yyyy-mm-dd"
+        startView: "months",
+        minViewMode: "months",
+        format: 'yyyy-mm-dd'
+    }).on('change', function() {
+        $('.datepicker').hide();
     });
 </script>
 <?= $this->endSection('content'); ?>

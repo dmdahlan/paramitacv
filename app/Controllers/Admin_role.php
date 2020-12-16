@@ -16,6 +16,7 @@ class Admin_role extends BaseController
     }
     public function save()
     {
+        dd($this->request->getPost('tgl_gaji'));
         if (!$this->validate([
             'name' => [
                 'rules' => 'required|is_unique[auth_groups.name]',

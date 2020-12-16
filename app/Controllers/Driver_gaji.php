@@ -34,7 +34,7 @@ class Driver_gaji extends BaseController
             } else {
                 $row[] = Time::parse($r->tgl_gaji)->toLocalizedString('MMM-YYYY');
             }
-            $row[] = Time::parse($r->tgl)->toLocalizedString('dd-MMM-YY');
+            $row[] = Time::parse($r->tgl)->toLocalizedString('MM yyyy');
             $row[] = $r->nopol;
             $row[] = $r->produk;
             $row[] = $r->dari;

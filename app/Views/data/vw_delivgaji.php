@@ -42,7 +42,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <input id="tglgaji" placeholder="Tanggal Gaji" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
+                                    <input id="tglgaji" placeholder="Bulan Gaji" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
                                 </div>
                                 <div class="col-md-4">
                                     <button type="button" id="btn-filter" class="btn btn-info btn-sm">Cari</button>
@@ -57,7 +57,7 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>SJ KEMBALI</th>
-                                        <th>TGL GAJI</th>
+                                        <th>BULAN GAJI</th>
                                         <th>DELIVERY</th>
                                         <th>NAMA</th>
                                         <th>NO SJ</th>
@@ -373,9 +373,11 @@
         });
     }
     $('.tanggal').datepicker({
-        autoclose: true,
-        todayHighlight: true,
-        format: "yyyy-mm-dd"
+        startView: "months",
+        minViewMode: "months",
+        format: 'yyyy-mm-dd'
+    }).on('change', function() {
+        $('.datepicker').hide();
     });
 </script>
 <?= $this->endSection('content'); ?>

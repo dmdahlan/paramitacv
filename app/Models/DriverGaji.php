@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use CodeIgniter\I18n\Time;
 
 class DriverGaji extends Model
 {
@@ -32,8 +33,8 @@ class DriverGaji extends Model
         $this->dt->where('deliv_order.deleted_at', null);
 
         $request = \Config\Services::request();
-        if ($request->getVar('tgl_gaji')) {
-            $this->dt->like('tgl_gaji', $request->getVar('tgl_gaji'));
+        if ($request->getPost('tgl_gaji')) {
+            $this->dt->like('tgl_gaji', $request->getPost('tgl_gaji'));
         }
         $this->dt->where('nama', $nama);
         $i = 0;
