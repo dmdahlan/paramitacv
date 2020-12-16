@@ -45,7 +45,6 @@
                                     <input id="tgldeliv" placeholder="Tanggal Delivery" class="form-control tanggall form-control-sm" type="text" autocomplete="off">
                                 </div>
                                 <div class="col">
-                                    <button type="button" id="btn-filter" class="btn btn-info btn-sm">Cari</button>
                                     <button class="btn btn-info btn-sm" onclick="refresh()"> <span>Refresh</span></button>
                                 </div>
                             </div>
@@ -231,8 +230,8 @@
     $('#bt').change(function() {
         table.ajax.reload();
     });
-    $('#btn-filter').click(function() { //button filter event click
-        table.ajax.reload(); //just reload table
+    $('#tgldeliv').change(function() {
+        table.ajax.reload();
     });
 
     function reload_table() {
@@ -242,6 +241,7 @@
     function refresh() {
         document.getElementById("bk").value = "";
         document.getElementById("bt").value = "";
+        document.getElementById("tgldeliv").value = "";
         reload_table();
     }
 

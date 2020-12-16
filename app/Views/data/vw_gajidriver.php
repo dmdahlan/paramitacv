@@ -31,7 +31,6 @@
                                     <input id="tgl_gaji" placeholder="Bulan Gaji" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
                                 </div>
                                 <div class="col-md">
-                                    <button type="button" id="btn-filter" class="btn btn-info btn-sm">Tampilkan</button>
                                     <button type="button" class="btn btn-info btn-sm" onclick="refresh()"> <span>Refresh</span></button>
                                 </div>
                             </div>
@@ -90,11 +89,8 @@
             }]
         });
     });
-    $('#tgl_gaji').keyup(function() {
+    $('#tgl_gaji').change(function() {
         table.ajax.reload();
-    });
-    $('#btn-filter').click(function() { //button filter event click
-        table.ajax.reload(); //just reload table
     });
 
     function refresh() {

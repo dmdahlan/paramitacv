@@ -42,10 +42,9 @@
                                     </select>
                                 </div>
                                 <div class="col-md-2">
-                                    <input id="tglgaji" placeholder="Bulan Gaji" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
+                                    <input id="tglgaji" placeholder="Gaji Bulan" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="button" id="btn-filter" class="btn btn-info btn-sm">Cari</button>
                                     <button class="btn btn-info btn-sm" onclick="refresh()"> <span>Refresh</span></button>
                                 </div>
                             </div>
@@ -203,8 +202,8 @@
     $('#bg').change(function() {
         table.ajax.reload();
     });
-    $('#btn-filter').click(function() { //button filter event click
-        table.ajax.reload(); //just reload table
+    $('#tglgaji').change(function() {
+        table.ajax.reload();
     });
 
     function reload_table() {
