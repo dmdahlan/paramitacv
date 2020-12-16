@@ -56,7 +56,7 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>SJ KEMBALI</th>
-                                        <th>BULAN GAJI</th>
+                                        <th>PERIODE</th>
                                         <th>DELIVERY</th>
                                         <th>NAMA</th>
                                         <th>NO SJ</th>

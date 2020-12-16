@@ -28,7 +28,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <input id="tgl_gaji" placeholder="Bulan Gaji" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
+                                    <input id="tgl_gaji" placeholder="Periode" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
                                 </div>
                                 <div class="col-md">
                                     <button type="button" class="btn btn-info btn-sm" onclick="refresh()"> <span>Refresh</span></button>
@@ -42,7 +42,7 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>SJ KEMBALI</th>
-                                        <th>BULAN GAJI</th>
+                                        <th>PERIODE</th>
                                         <th>DELIVERY</th>
                                         <th>NOPOL</th>
                                         <th>PRODUK</th>

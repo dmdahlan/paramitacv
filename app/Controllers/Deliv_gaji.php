@@ -31,7 +31,7 @@ class Deliv_gaji extends BaseController
             if ($r->tgl_gaji == null) {
                 $row[] = '';
             } else {
-                $row[] = Time::parse($r->tgl_gaji)->toLocalizedString('dd-MMM-YY');
+                $row[] = Time::parse($r->tgl_gaji)->toLocalizedString('MMM-YYYY');
             }
             $row[] = Time::parse($r->tgl)->toLocalizedString('dd-MMM-YY');
             $row[] = $r->nama;
