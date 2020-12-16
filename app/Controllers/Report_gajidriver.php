@@ -87,6 +87,22 @@ class Report_gajidriver extends BaseController
             $margaji      += $r->margaji;
             $aprqty       += $r->aprqty;
             $aprgaji      += $r->aprgaji;
+            $meiqty       += $r->meiqty;
+            $meigaji      += $r->meigaji;
+            $junqty       += $r->junqty;
+            $jungaji      += $r->jungaji;
+            $julqty       += $r->julqty;
+            $julgaji      += $r->julgaji;
+            $agtqty       += $r->agtqty;
+            $agtgaji      += $r->agtgaji;
+            $sepqty       += $r->sepqty;
+            $sepgaji      += $r->sepgaji;
+            $oktqty       += $r->oktqty;
+            $oktgaji      += $r->oktgaji;
+            $nopqty       += $r->nopqty;
+            $nopgaji      += $r->nopgaji;
+            $desqty       += $r->desqty;
+            $desgaji      += $r->desgaji;
             $temp_bln_total  += $total_bulan;
             //add html for action
             $data[] = $row;
@@ -118,8 +134,6 @@ class Report_gajidriver extends BaseController
             $this->rupiah($nopgaji),
             $this->rupiah($desqty),
             $this->rupiah($desgaji),
-
-
         );
 
         $output = array(

@@ -43,7 +43,7 @@
                         <!-- /.card-header -->
                         <div id="tabel-div" hidden class="card-body table table-responsive table-sm" style="font-size: 14px;">
                             <table id="tabel" class="table table-bordered table-hover table-striped js-basic-example dataTable nowrap cell-border" cellspacing="0" width="100%" role="grid">
-                                <thead class="reportgaji">
+                                <thead>
                                     <tr>
                                         <th rowspan="2">NO</th>
                                         <th rowspan="2">DRIVER</th>
