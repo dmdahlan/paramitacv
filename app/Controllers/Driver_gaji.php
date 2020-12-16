@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use CodeIgniter\I18n\Time;
+
 class Driver_gaji extends BaseController
 {
     public function index()
@@ -13,50 +15,37 @@ class Driver_gaji extends BaseController
     }
     public function ajax_list()
     {
-        $nama = session()->get('name');
+        $nama = user()->username;
         $list = $this->drivergaji->get_datatables($nama);
         $data = array();
         $no = @$_POST['start'];
         $total = 0;
-        if (session()->get('role_name') == 'Driver') {
-            foreach ($list as $r) {
-                if (session()->get('name') == $r->nama) {
-                    $no++;
-                    $row = array();
-                    $row[] = $no;
-                    $row[] = $r->sj_kembali;
-                    $row[] = $r->tgl_gaji;
-                    $row[] = $r->tgl;
-                    $row[] = $r->nopol;
-                    $row[] = $r->produk;
-                    $row[] = $r->dari;
-                    $row[] = $this->rupiah($r->gaji);
-                    $row[] = $r->shipment;
-                    $row[] = $r->nama;
-
-                    $total += $r->gaji;
-                    $data[] = $row;
-                }
+        foreach ($list as $r) {
+            $no++;
+            $row = array();
+            $row[] = $no;
+            if ($r->sj_kembali == null) {
+                $row[] = '';
+            } else {
+                $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-YY');
             }
-        } else {
-            foreach ($list as $r) {
-                $no++;
-                $row = array();
-                $row[] = $no;
-                $row[] = $r->sj_kembali;
-                $row[] = $r->tgl_gaji;
-                $row[] = $r->tgl;
-                $row[] = $r->nopol;
-                $row[] = $r->produk;
-                $row[] = $r->dari;
-                $row[] = $this->rupiah($r->gaji);
-                $row[] = $r->shipment;
-                $row[] = $r->nama;
-
-                $total += $r->gaji;
-                $data[] = $row;
+            if ($r->tgl_gaji == null) {
+                $row[] = '';
+            } else {
+                $row[] = Time::parse($r->tgl_gaji)->toLocalizedString('MMM-YYYY');
             }
+            $row[] = Time::parse($r->tgl)->toLocalizedString('dd-MMM-YY');
+            $row[] = $r->nopol;
+            $row[] = $r->produk;
+            $row[] = $r->dari;
+            $row[] = $this->rupiah($r->gaji);
+            $row[] = $r->shipment;
+            $row[] = $r->nama;
+
+            $total += $r->gaji;
+            $data[] = $row;
         }
+
         $data[] = array(
             '', '', '', '', '', 'TOTAL', '', $this->rupiah($total), '', ''
         );

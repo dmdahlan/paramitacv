@@ -7,6 +7,7 @@ class Admin_menu extends BaseController
 {
     public function index()
     {
+        dd(user()->getRoles()[2]);
         $data = [
             'title'         => 'Admin | Menu'
         ];
