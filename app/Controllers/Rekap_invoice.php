@@ -30,6 +30,9 @@ class Rekap_invoice extends BaseController
         $no = @$_POST['start'];
         $total = 0;
         $grandtotal = 0;
+        $bayar1 = 0;
+        $bayar2 = 0;
+        $piutang = 0;
         foreach ($list as $r) {
             $no++;
             $row = array();
@@ -94,13 +97,27 @@ class Rekap_invoice extends BaseController
             if ($r->ppn +  $r->pph == 2) {
                 $invaja = $r->nominal + $ppn - $pph;
             }
+            // sisa pembayaran
+            $sisabayar = 0;
+            if ($r->ppn +  $r->pph == 0) {
+                $sisabayar = $r->nominal - $r->nominal1 - $r->nominal2;
+            }
+            if ($r->ppn +  $r->pph == 1) {
+                $sisabayar = $r->nominal + $ppn - $r->nominal1 - $r->nominal2;
+            }
+            if ($r->ppn +  $r->pph == 2) {
+                $sisabayar = $r->nominal + $ppn - $pph - $r->nominal1 - $r->nominal2;
+            }
 
+            $bayar1 += $r->nominal1;
+            $bayar2 += $r->nominal2;
             $total += $r->nominal;
             $grandtotal += $invaja;
+            $piutang += $sisabayar;
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', 'TOTAL', $this->rupiah($total), '', '', $this->rupiah($grandtotal), '', '', '', '', '', '', ''
+            '', '', '', '', 'TOTAL', $this->rupiah($total), '', '', $this->rupiah($grandtotal), '', '', $this->rupiah($bayar1), '', $this->rupiah($bayar2), $this->rupiah($piutang), ''
         );
         $output = array(
             "draw" => @$_POST['draw'],

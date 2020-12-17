@@ -32,7 +32,7 @@ class Deliv_order extends BaseController
                 $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-YY');
             }
             $row[] = $r->no_sj;
-            $row[] = '<a class="text-dark" href="javascript:void(0)" onclick="edit_deliv(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
+            $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="edit_deliv(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
             $row[] = $r->orderan;
             $row[] = $r->nama;
             $row[] = $r->lokasi_awal;
