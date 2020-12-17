@@ -143,8 +143,8 @@ class Master_produk extends BaseController
     public function _getRulesValidation($method = null)
     {
         if ($method == 'save') {
-            $produk         = 'required]';
-            $customer       = 'required]';
+            $produk         = 'required';
+            $customer       = 'required';
         } else {
             $produk         = 'required';
             $customer       = 'required';
