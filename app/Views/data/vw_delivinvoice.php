@@ -60,6 +60,7 @@
                                         <th>TYPE</th>
                                         <th>AREA</th>
                                         <th>OUTLET</th>
+                                        <th>CUSTOMER</th>
                                         <th>SHIPMENT</th>
                                         <th>Qty</th>
                                         <th>TGL INV</th>

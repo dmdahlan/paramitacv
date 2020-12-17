@@ -29,6 +29,7 @@ class Deliv_invoice extends BaseController
             $row[] = $r->orderan;
             $row[] = $r->dari;
             $row[] = $r->outlet;
+            $row[] = $r->customer;
             $row[] = $r->shipment;
             $row[] = $r->qty;
             if ($r->tgl_inv == null) {
@@ -53,7 +54,7 @@ class Deliv_invoice extends BaseController
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), '', ''
+            '', '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), '', ''
         );
         $output = array(
             "draw" => @$_POST['draw'],
