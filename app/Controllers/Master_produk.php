@@ -22,8 +22,8 @@ class Master_produk extends BaseController
             $no++;
             $row = array();
             $row[] = $no;
-            $row[] = $r->produk;
             $row[] = $r->customer;
+            $row[] = $r->produk;
             $row[] = $r->alamat;
             $row[] = '
                     <a class="btn btn-warning btn-xs" href="javascript:void(0)" title="Edit" onclick="edit_produk(' . "'" . $r->idm_produk . "'" . ')">Edit</a>
@@ -143,25 +143,23 @@ class Master_produk extends BaseController
     public function _getRulesValidation($method = null)
     {
         if ($method == 'save') {
-            $produk         = 'required|is_unique[master_produk.produk]';
-            $customer       = 'required|is_unique[master_produk.customer]';
+            $produk         = 'required]';
+            $customer       = 'required]';
         } else {
-            $produk         = 'required|is_unique[master_produk.produk,idm_produk,{id}]';
-            $customer       = 'required|is_unique[master_produk.customer,idm_produk,{id}]';
+            $produk         = 'required';
+            $customer       = 'required';
         }
         $rulesValidation = [
             'produk' => [
                 'rules' => $produk,
                 'errors' => [
-                    'required' => '{field} harus diisi.',
-                    'is_unique' => '{field} sudah ada'
+                    'required' => '{field} harus diisi.'
                 ]
             ],
             'customer' => [
                 'rules' => $customer,
                 'errors' => [
-                    'required' => '{field} harus diisi.',
-                    'is_unique' => '{field} sudah ada'
+                    'required' => '{field} harus diisi.'
                 ]
             ]
         ];

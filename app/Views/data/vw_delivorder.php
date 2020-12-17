@@ -69,6 +69,7 @@
                                         <th>TUJUAN</th>
                                         <th>OUTLET</th>
                                         <th>PRODUK</th>
+                                        <th>CUSTOMER</th>
                                         <th>SHIPMENT</th>
                                         <th>QTY</th>
                                         <th>CLAIM</th>
@@ -261,10 +262,6 @@
                     data.tgl_akhir = $('#tglakhir').val();
                 },
             },
-            "columnDefs": [{
-                "targets": [12],
-                "className": 'text-right'
-            }]
         });
         init_select();
     });

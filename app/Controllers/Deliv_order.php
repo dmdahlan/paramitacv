@@ -40,6 +40,7 @@ class Deliv_order extends BaseController
             $row[] = $r->tujuan;
             $row[] = $r->outlet;
             $row[] = $r->produk;
+            $row[] = $r->customer;
             $row[] = $r->shipment;
             $row[] = $r->qty;
             $row[] = $r->claim;

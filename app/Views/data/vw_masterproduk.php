@@ -39,8 +39,8 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Produk</th>
                                         <th>Nama Customer</th>
+                                        <th>Nama Produk</th>
                                         <th>Alamat</th>
                                         <th>Opsi</th>
                                     </tr>

@@ -15,7 +15,7 @@ class MasterProduk extends Model
 
     protected $column_order = array('idm_produk', 'produk', 'customer', 'alamat');
     protected $column_search = array('idm_produk', 'produk', 'customer', 'alamat');
-    protected $order = array('produk' => 'asc');
+    protected $order = array('customer' => 'asc');
 
     function get_datatables()
     {
