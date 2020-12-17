@@ -32,9 +32,9 @@
                                     </div>
                                     <form action="" method="POST">
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" name="keyword" placeholder="no invoice">
+                                            <input type="text" class="form-control form-control-sm" name="keyword" placeholder="no invoice">
                                             <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="submit">cari</button>
+                                                <button class="btn btn-default btn-sm" type="submit">cari</button>
                                                 <a onclick="window.print()" class="btn btn-default btn-sm"><i class="fas fa-print"></i> Print</a>
                                             </div>
                                         </div>
@@ -59,12 +59,10 @@
                                         <address>
                                             Invoice<br>
                                             Tanggal<br>
-                                            PPN
                                         </address>
                                     </div>
                                     <div class="col-sm-1 invoice-col">
                                         <address>
-                                            :<br>
                                             :<br>
                                             :<br>
                                         </address>
@@ -73,7 +71,6 @@
                                     <div class="col-sm-5 invoice-col">
                                         <b>121 prmt</b><br>
                                         <b>20 November</b><br>
-                                        <b>01010101</b>
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-sm-4 invoice-col">
@@ -98,10 +95,6 @@
                                             <th>NAMA OUTLET</th>
                                             <th>QTY in PC</th>
                                             <th>TARIF</th>
-                                            <th>Ppn</th>
-                                            <th>Pph23</th>
-                                            <th>TOTAL</th>
-                                            <th>KETERANGAN</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -124,84 +117,14 @@
                                                 <td><?= $inv['outlet'] ?></td>
                                                 <td><?= $inv['qty'] ?></td>
                                                 <td><?= $inv['nominal'] ?></td>
-                                                <td><?= $inv['nominal'] * 10 / 100 ?></td>
-                                                <td><?= $inv['nominal'] * 2 / 100 ?></td>
-                                                <td>
-                                                    <?= $inv['nominal'] + $inv['nominal'] * 10 / 100 - $inv['nominal'] * 2 / 100 ?>
-                                                </td>
-                                                <td><?= $inv['billing'] ?></td>
                                             </tr>
-                                            <?php
-                                            $totalqty +=  $inv['qty'];
-                                            $totalharga +=  $inv['nominal'];
-                                            $totalppn +=  $inv['nominal'] * 10 / 100;
-                                            $totalpph +=  $inv['nominal'] * 2 / 100;
-                                            $totalgrand +=  $inv['nominal'] + $inv['nominal'] * 10 / 100 - $inv['nominal'] * 2 / 100;
-                                            ?>
                                         <?php endforeach ?>
-                                        <tr>
-                                            <td colspan="7"></td>
-                                            <td><?= $totalqty ?></td>
-                                            <td><?= $totalharga ?></td>
-                                            <td><?= $totalppn ?></td>
-                                            <td><?= $totalpph ?></td>
-                                            <td><?= $totalgrand ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <?php
-
-                                        // FUNGSI TERBILANG OLEH : MALASNGODING.COM
-                                        // WEBSITE : WWW.MALASNGODING.COM
-                                        // AUTHOR : https://www.malasngoding.com/author/admin
-
-
-                                        function penyebut($nilai)
-                                        {
-                                            $nilai = abs($nilai);
-                                            $huruf = array("", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebelas");
-                                            $temp = "";
-                                            if ($nilai < 12) {
-                                                $temp = " " . $huruf[$nilai];
-                                            } else if ($nilai < 20) {
-                                                $temp = penyebut($nilai - 10) . " belas";
-                                            } else if ($nilai < 100) {
-                                                $temp = penyebut($nilai / 10) . " puluh" . penyebut($nilai % 10);
-                                            } else if ($nilai < 200) {
-                                                $temp = " Seratus" . penyebut($nilai - 100);
-                                            } else if ($nilai < 1000) {
-                                                $temp = penyebut($nilai / 100) . " ratus" . penyebut($nilai % 100);
-                                            } else if ($nilai < 2000) {
-                                                $temp = " Seribu" . penyebut($nilai - 1000);
-                                            } else if ($nilai < 1000000) {
-                                                $temp = penyebut($nilai / 1000) . " ribu" . penyebut($nilai % 1000);
-                                            } else if ($nilai < 1000000000) {
-                                                $temp = penyebut($nilai / 1000000) . " juta" . penyebut($nilai % 1000000);
-                                            } else if ($nilai < 1000000000000) {
-                                                $temp = penyebut($nilai / 1000000000) . " milyar" . penyebut(fmod($nilai, 1000000000));
-                                            } else if ($nilai < 1000000000000000) {
-                                                $temp = penyebut($nilai / 1000000000000) . " trilyun" . penyebut(fmod($nilai, 1000000000000));
-                                            }
-                                            return $temp;
-                                        }
-
-                                        function terbilang($nilai)
-                                        {
-                                            if ($nilai < 0) {
-                                                $hasil = "minus " . trim(penyebut($nilai));
-                                            } else {
-                                                $hasil = trim(penyebut($nilai));
-                                            }
-                                            return $hasil;
-                                        }
-
-
-                                        $angka = $totalgrand;
-
-                                        ?>
-                                        <tr>
-                                            <td colspan="13"><b>Terbilang : <?= terbilang($angka); ?> Rupiah<b></td>
-                                        </tr>
                                     </tbody>
+                                    <tr>
+                                        <th colspan="7" class="text-center">a</th>
+                                        <th rowspan="7">a</th>
+                                        <th rowspan="7">8</th>
+                                    </tr>
                                 </table>
                                 <div class="container-fluid">
                                     <div class="row">
@@ -238,4 +161,19 @@
         <!-- /.content -->
     </div>
 </section>
+<style>
+    @media print {
+        .btn-default {
+            display: none;
+        }
+
+        .input-group {
+            display: none;
+        }
+
+        .main-footer {
+            display: none;
+        }
+    }
+</style>
 <?= $this->endsection() ?>
