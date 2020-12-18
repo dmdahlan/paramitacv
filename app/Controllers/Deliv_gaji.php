@@ -23,7 +23,7 @@ class Deliv_gaji extends BaseController
             $no++;
             $row = array();
             $row[] = $no;
-            $row[] = $r->idm_gaji;
+            // $row[] = $r->idm_gaji;
             if ($r->sj_kembali == null) {
                 $row[] = '';
             } else {

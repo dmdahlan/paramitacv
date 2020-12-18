@@ -55,7 +55,7 @@
                                 <thead>
                                     <tr>
                                         <th>NO</th>
-                                        <th>id</th>
+                                        <!-- <th>id</th> -->
                                         <th>SJ KEMBALI</th>
                                         <th>PERIODE</th>
                                         <th>DELIVERY</th>
