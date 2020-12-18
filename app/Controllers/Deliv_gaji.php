@@ -23,6 +23,7 @@ class Deliv_gaji extends BaseController
             $no++;
             $row = array();
             $row[] = $no;
+            $row[] = $r->idm_gaji;
             if ($r->sj_kembali == null) {
                 $row[] = '';
             } else {
@@ -49,6 +50,7 @@ class Deliv_gaji extends BaseController
             } else {
                 $row[] =
                     '<a class="btn btn-warning btn-xs" href="javascript:void(0)" title="Edit" onclick="edit_gaji(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
+                    <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="Edit" onclick="hapus_gaji(' . "'" . $r->idm_gaji . "'" . ')">hapus</a>
                     ';
             }
             $data[] = $row;
@@ -87,6 +89,14 @@ class Deliv_gaji extends BaseController
         ];
 
         if ($this->deliverygaji->save($data)) {
+            echo json_encode(['status' => TRUE]);
+        } else {
+            echo json_encode(['status' => FALSE]);
+        }
+    }
+    public function delete_gaji($id)
+    {
+        if ($this->deliverygaji->delete($id)) {
             echo json_encode(['status' => TRUE]);
         } else {
             echo json_encode(['status' => FALSE]);

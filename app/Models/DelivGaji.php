@@ -11,7 +11,6 @@ class DelivGaji extends Model
     protected $id = 'idm_gaji';
     protected $primaryKey = 'idm_gaji';
     protected $useTimestamps = true;
-    protected $useSoftDeletes = true;
 
     protected $column_order = array('idm_deliv', 'sj_kembali', 'tgl_gaji', 'tgl', 'nama', 'shipment', 'nopol', 'produk', 'dari', 'tujuan', 'gaji');
     protected $column_search = array('idm_deliv', 'sj_kembali', 'tgl_gaji', 'tgl', 'nama', 'shipment', 'nopol', 'produk', 'dari', 'tujuan', 'gaji');
@@ -37,6 +36,7 @@ class DelivGaji extends Model
             ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuan_idm', 'left')
             ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari,deliv_gaji.tgl_gaji,master_driver.nama, master_produk.produk,master_tujuan.tujuan,master_gaji.gaji,deliv_gaji.idm_gaji');
         $this->dt->where('deliv_order.deleted_at', null);
+        $this->dt->where('deliv_gaji.deleted_at', null);
         $request = \Config\Services::request();
         if ($request->getVar('bk') == 'BELUM KEMBALI') {
             $this->dt->where('sj_kembali', null);

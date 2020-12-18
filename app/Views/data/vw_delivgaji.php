@@ -55,6 +55,7 @@
                                 <thead>
                                     <tr>
                                         <th>NO</th>
+                                        <th>id</th>
                                         <th>SJ KEMBALI</th>
                                         <th>PERIODE</th>
                                         <th>DELIVERY</th>
@@ -341,7 +342,7 @@
         }
     }
 
-    function hapus_inv(id) {
+    function hapus_gaji(id) {
         swal.fire({
             title: 'Apakah Anda Yakin ?',
             text: 'Anda Tidak Akan Bisa Merecover Kembali Data Yang Sudah Anda Hapus !',
@@ -355,7 +356,7 @@
         }).then((willDelete) => {
             if (willDelete.value) {
                 $.ajax({
-                    url: "<?php echo site_url('deliv_invoice/delete_inv') ?>/" + id,
+                    url: "<?php echo site_url('deliv_gaji/delete_gaji') ?>/" + id,
                     type: "POST",
                     dataType: "JSON",
                     success: function(data) {
