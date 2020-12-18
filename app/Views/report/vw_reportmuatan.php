@@ -47,7 +47,7 @@
                                 <thead class="text-center">
                                     <tr>
                                         <th rowspan="2">NO</th>
-                                        <th rowspan="2">DRIVER</th>
+                                        <th rowspan="2">PRODUK</th>
                                         <th colspan="2">JAN</th>
                                         <th colspan="2">FEB</th>
                                         <th colspan="2">MAR</th>
