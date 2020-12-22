@@ -86,7 +86,6 @@ class Deliv_order extends BaseController
             'claim'           => $this->request->getPost('claim'),
             'ketjuan'         => $ketjuan
         ];
-        d($data);
         if ($this->delivery->save($data)) {
             echo json_encode(['status' => TRUE]);
         } else {

@@ -224,6 +224,9 @@
                         NAMA : <label id="supir"></label>
                     </div>
                     <div class="row pertama">
+                        NOPOL : <label id="nopol"></label>
+                    </div>
+                    <div class="row pertama">
                         NO HP : <label id="nohp"></label>
                     </div>
                     <div class="row kedua">
@@ -413,6 +416,7 @@
             dataType: 'JSON',
             success: function(data) {
                 $('#id').val(data.id_sap);
+                $('#nopol').text(data.nopol);
                 $('#supir').text(data.nama);
                 $('#nohp').text(data.nohp);
                 $('#keur').text(data.no_keur);
