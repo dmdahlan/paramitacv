@@ -13,8 +13,8 @@ class DelivInvoice extends Model
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 
-    protected $column_order = array('idm_deliv', 'deliv_order.tgl', 'master_unit.nopol', 'orderan', 'dari', 'outlet', 'customer', 'shipment', 'qty', 'tgl_inv', 'no_inv', 'billing', 'produk', 'shipment');
-    protected $column_search = array('idm_deliv', 'deliv_order.tgl', 'master_unit.nopol', 'orderan', 'no_inv', 'billing', 'produk', 'shipment', 'customer');
+    protected $column_order = array('idm_deliv', 'deliv_order.tgl', 'orderan', 'dari', 'tujuan', 'master_unit.nopol', 'orderan', 'dari', 'outlet', 'customer', 'shipment', 'qty', 'tgl_inv', 'no_inv', 'billing', 'produk', 'shipment');
+    protected $column_search = array('idm_deliv', 'deliv_order.tgl', 'orderan', 'dari', 'tujuan', 'master_unit.nopol', 'orderan', 'dari', 'outlet', 'customer', 'shipment', 'qty', 'tgl_inv', 'no_inv', 'billing', 'produk', 'shipment');
     protected $order = array('tgl_deliv' => 'desc');
 
     function get_datatables()
@@ -37,6 +37,12 @@ class DelivInvoice extends Model
         $this->dt->where('deliv_order.deleted_at', null);
 
         $request = \Config\Services::request();
+        if ($request->getPost('dari')) {
+            $this->dt->like('dari', $request->getPost('dari'));
+        }
+        if ($request->getPost('tujuan')) {
+            $this->dt->like('tujuan', $request->getPost('tujuan'));
+        }
         if ($request->getVar('bk') == 'BELUM KEMBALI') {
             $this->dt->where('sj_kembali', null);
         }

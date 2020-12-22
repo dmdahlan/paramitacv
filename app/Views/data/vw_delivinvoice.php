@@ -44,6 +44,12 @@
                                 <div class="col-md-2">
                                     <input id="tgldeliv" placeholder="Tanggal Delivery" class="form-control tanggall form-control-sm" type="text" autocomplete="off">
                                 </div>
+                                <div class="col-md-2">
+                                    <input id="dari" placeholder="dari" class="form-control form-control-sm" type="text" autocomplete="off">
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="tujuan" placeholder="tujuan" class="form-control form-control-sm" type="text" autocomplete="off">
+                                </div>
                                 <div class="col">
                                     <button class="btn btn-info btn-sm" onclick="refresh()"> <span>Refresh</span></button>
                                 </div>
@@ -58,7 +64,7 @@
                                         <th>TANGGAL</th>
                                         <th>NO POLISI</th>
                                         <th>TYPE</th>
-                                        <th>AREA</th>
+                                        <th>DARI - TUJUAN</th>
                                         <th>OUTLET</th>
                                         <th>CUSTOMER</th>
                                         <th>SHIPMENT</th>
@@ -217,6 +223,8 @@
                     data.bk = $('#bk').val();
                     data.bt = $('#bt').val();
                     data.tgldeliv = $('#tgldeliv').val();
+                    data.dari = $('#dari').val();
+                    data.tujuan = $('#tujuan').val();
                 },
             },
             "columnDefs": [{
@@ -234,6 +242,12 @@
     $('#tgldeliv').change(function() {
         table.ajax.reload();
     });
+    $('#dari').keyup(function() {
+        table.ajax.reload();
+    });
+    $('#tujuan').keyup(function() {
+        table.ajax.reload();
+    });
 
     function reload_table() {
         table.ajax.reload(null, false);
@@ -243,6 +257,8 @@
         document.getElementById("bk").value = "";
         document.getElementById("bt").value = "";
         document.getElementById("tgldeliv").value = "";
+        document.getElementById("dari").value = "";
+        document.getElementById("tujuan").value = "";
         reload_table();
     }
 

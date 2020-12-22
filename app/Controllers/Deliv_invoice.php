@@ -27,7 +27,7 @@ class Deliv_invoice extends BaseController
             $row[] = Time::parse($r->tgl_deliv)->toLocalizedString('dd-MMM-YY');
             $row[] = $r->nopol;
             $row[] = $r->orderan;
-            $row[] = $r->dari;
+            $row[] = $r->dari . ' - ' . $r->tujuan;
             $row[] = $r->outlet;
             $row[] = $r->customer;
             $row[] = $r->shipment;
