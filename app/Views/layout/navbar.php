@@ -81,7 +81,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
-                        <li class="user-header bg-white">
+                        <li class="user-header bg-danger text-white">
                             <img src="/assets/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
                             <p>
                                 <?= user()->username; ?>
@@ -104,7 +104,7 @@
     </nav>
     <!-- Nav Sebelum Login -->
 <?php else : ?>
-    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white fixed-top">
+    <nav class="main-header navbar navbar-expand-md navbar-dark navbar-danger fixed-top">
         <div class="container-fluid">
             <a href="<?= base_url(''); ?>" class="navbar-brand">
                 <img src="<?= base_url(''); ?>/img/logotitle.png" alt="AdminLTE Logo" class="brand-image">
