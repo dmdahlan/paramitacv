@@ -18,6 +18,7 @@ class Deliv_gaji extends BaseController
         $list = $this->deliverygaji->get_datatables();
         $data = array();
         $no = @$_POST['start'];
+        $total_gaji = 0;
 
         foreach ($list as $r) {
             $no++;
@@ -53,8 +54,12 @@ class Deliv_gaji extends BaseController
                     <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="Edit" onclick="hapus_gaji(' . "'" . $r->idm_gaji . "'" . ')">hapus</a>
                     ';
             }
+            $total_gaji += $r->gaji;
             $data[] = $row;
         }
+        $data[] = array(
+            '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total_gaji), ''
+        );
         $output = array(
             "draw" => @$_POST['draw'],
             "recordsTotal" => $this->deliverygaji->count_all(),
