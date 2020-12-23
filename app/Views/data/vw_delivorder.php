@@ -27,7 +27,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md">
                                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal" onclick="tambah_deliv()">Tambah</button>
                                 </div>
                                 <div class="col-md-2">
@@ -36,7 +36,7 @@
                                 <div class="col-md-2">
                                     <input id="tglakhir" placeholder="tgl akhir" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <input id="nopoll" placeholder="Nopol" class="form-control form-control-sm" type="text" autocomplete="off">
                                 </div>
                                 <div class="col-md-2">
@@ -45,6 +45,9 @@
                                         <option value="BELUM KEMBALI">Belum Kembali</option>
                                         <option value="KEMBALI">Kembali</option>
                                     </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="sjkembali" placeholder="SJ Kembali" class="form-control tanggall form-control-sm" type="text" autocomplete="off">
                                 </div>
                                 <div class="col-md">
                                     <button type="button" id="btn-filter" class="btn btn-info btn-sm">Tampilkan</button>
@@ -260,6 +263,7 @@
                     data.bk = $('#bk').val();
                     data.tgl_awal = $('#tglawal').val();
                     data.tgl_akhir = $('#tglakhir').val();
+                    data.sj_kembali = $('#sjkembali').val();
                 },
             },
         });
@@ -269,6 +273,9 @@
         table.ajax.reload();
     });
     $('#bk').change(function() {
+        table.ajax.reload();
+    });
+    $('#sjkembali').change(function() {
         table.ajax.reload();
     });
     $('#btn-filter').click(function() { //button filter event click
@@ -287,6 +294,7 @@
         document.getElementById("tglakhir").value = "";
         document.getElementById("nopoll").value = "";
         document.getElementById("bk").value = "";
+        document.getElementById("sjkembali").value = "";
         reload_table();
     }
 
@@ -512,6 +520,11 @@
         autoclose: true,
         todayHighlight: true,
         format: "dd-mm-yyyy"
+    });
+    $('.tanggall').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yyyy-mm-dd"
     });
 </script>
 <?= $this->endSection('content'); ?>

@@ -45,6 +45,9 @@ class DelivOrder extends Model
         if ($request->getVar('nopol')) {
             $this->dt->like('nopol', $request->getVar('nopol'));
         }
+        if ($request->getPost('sj_kembali')) {
+            $this->dt->where('sj_kembali', $request->getPost('sj_kembali'));
+        }
         if ($request->getVar('bk') == 'BELUM KEMBALI') {
             $this->dt->where('sj_kembali', null);
         }
