@@ -1,6 +1,6 @@
 <!-- Nav Login -->
 <?php if (logged_in()) : ?>
-    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white fixed-top">
+    <nav class="main-header navbar navbar-expand-md navbar-dark navbar-danger fixed-top">
         <div class="container-fluid">
             <a href="<?= base_url(''); ?>" class="navbar-brand">
                 <img src="<?= base_url(''); ?>/img/logotitle.png" alt="AdminLTE Logo" class="brand-image">
