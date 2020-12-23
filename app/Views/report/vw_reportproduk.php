@@ -28,7 +28,6 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-7">
-
                                 </div>
                                 <div class="col-md-2">
                                     <input id="tgl_awal" placeholder="tgl awal" class="form-control tanggal form-control-sm" type="text" autocomplete="off">

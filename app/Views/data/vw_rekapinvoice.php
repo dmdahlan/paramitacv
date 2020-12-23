@@ -66,8 +66,8 @@
                                         <th>BANK</th>
                                         <th>TGL BYR</th>
                                         <th>NOMINAL</th>
-                                        <th>TGL BYR</th>
-                                        <th>NOMINAL</th>
+                                        <!-- <th>TGL BYR</th>
+                                        <th>NOMINAL</th> -->
                                         <th>SISA</th>
                                         <th>KETERANGAN</th>
                                         <!-- <th>Opsi</th> -->
@@ -149,8 +149,11 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label class="form-label">BANK</label>
-                                    <input id="bank" name="bank" class="form-control" placeholder="Bank" type="text">
-                                    <span class="help-block text-danger"></span>
+                                    <select id="bank1" name="brand_id" class="form-control">
+                                        <option value="">Pilih</option>
+                                        <option value="danamon">Danamon</option>
+                                        <option value="bca">BCA</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -168,7 +171,7 @@
                                     <input type="hidden" id="nominal1" name="nominal1">
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <!-- <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-label">TGL BAYAR</label>
                                     <input id="tgl_bayar2" name="tgl_bayar2" class="form-control tanggal" placeholder="Tanggal" type="text" autocomplete="off">
@@ -182,7 +185,7 @@
                                     <span class="help-block text-danger"></span>
                                     <input type="hidden" id="nominal2" name="nominal2">
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </form>
                 </div>
@@ -314,11 +317,11 @@
                 $('#nominall').val(data.nominal);
                 $('#nominal').val(data.nominal);
                 $('#ket_rekap').val(data.ket_rekap);
-                $('#bank').val(data.bank);
+                $('#bank1').val(data.bank1);
                 $('#tgl_bayar1').val(data.tgl_bayar1);
                 $('#nominall1').val(data.nominal1);
-                $('#tgl_bayar2').val(data.tgl_bayar2);
-                $('#nominall2').val(data.nominal1);
+                // $('#tgl_bayar2').val(data.tgl_bayar2);
+                // $('#nominall2').val(data.nominal2);
                 $('#md-form-rekapinv').modal('show');
                 $('#modal-title').text('Edit Data rekapinv');
             },

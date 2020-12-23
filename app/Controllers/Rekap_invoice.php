@@ -67,11 +67,19 @@ class Rekap_invoice extends BaseController
             if ($r->ppn +  $r->pph == 2) {
                 $row[] = $this->rupiah($r->nominal + $ppn - $pph);
             }
-            $row[] = $r->bank;
-            $row[] = $tgl_bayar1;
+            $row[] = $r->bank1;
+            if ($r->tgl_bayar1 == null) {
+                $row[] = '';
+            } else {
+                $row[] = Time::parse($r->tgl_bayar1)->toLocalizedString('dd-MMM-YY');
+            }
             $row[] = $this->rupiah($r->nominal1);
-            $row[] = $tgl_bayar2;
-            $row[] = $this->rupiah($r->nominal2);
+            // if ($r->tgl_bayar2 == null) {
+            //     $row[] = '';
+            // } else {
+            //     $row[] = Time::parse($r->tgl_bayar2)->toLocalizedString('dd-MMM-YY');
+            // }
+            // $row[] = $this->rupiah($r->nominal2);
             // sisa
             if ($r->ppn +  $r->pph == 0) {
                 $row[] = $this->rupiah($r->nominal - $r->nominal1 - $r->nominal2);
@@ -117,7 +125,7 @@ class Rekap_invoice extends BaseController
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', 'TOTAL', $this->rupiah($total), '', '', $this->rupiah($grandtotal), '', '', $this->rupiah($bayar1), '', $this->rupiah($bayar2), $this->rupiah($piutang), ''
+            '', '', '', '', 'TOTAL', $this->rupiah($total), '', '', $this->rupiah($grandtotal), '', '', $this->rupiah($bayar1), $this->rupiah($piutang), ''
         );
         $output = array(
             "draw" => @$_POST['draw'],
@@ -149,11 +157,11 @@ class Rekap_invoice extends BaseController
             'produk_idm'            => $this->request->getPost('produk_idm'),
             'nominal'               => $this->request->getPost('nominal'),
             'ket_rekap'             => $this->request->getPost('ket_rekap'),
-            'bank'                  => $this->request->getPost('bank'),
+            'bank1'                 => $this->request->getPost('bank1'),
             'tgl_bayar1'            => $tgl_bayar1,
             'nominal1'              => $this->request->getPost('nominal1'),
-            'tgl_bayar2'            => $tgl_bayar2,
-            'nominal2'              => $this->request->getPost('nominal2'),
+            // 'tgl_bayar2'            => $tgl_bayar2,
+            // 'nominal2'              => $this->request->getPost('nominal2'),
         ];
         if ($this->rekapinvoice->save($data)) {
             echo json_encode(['status' => TRUE]);
@@ -187,11 +195,11 @@ class Rekap_invoice extends BaseController
             'produk_idm'            => $this->request->getPost('produk_idm'),
             'nominal'               => $this->request->getPost('nominal'),
             'ket_rekap'             => $this->request->getPost('ket_rekap'),
-            'bank'                  => $this->request->getPost('bank'),
+            'bank1'                 => $this->request->getPost('bank1'),
             'tgl_bayar1'            => $tgl_bayar1,
             'nominal1'              => $this->request->getPost('nominal1'),
-            'tgl_bayar2'            => $tgl_bayar2,
-            'nominal2'              => $this->request->getPost('nominal2'),
+            // 'tgl_bayar2'            => $tgl_bayar2,
+            // 'nominal2'              => $this->request->getPost('nominal2'),
         ];
         if ($this->rekapinvoice->save($data)) {
             echo json_encode(['status' => TRUE]);

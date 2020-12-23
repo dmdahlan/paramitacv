@@ -43,7 +43,7 @@ class Migraterekapinvoice extends Migration
 				'constraint'     => 30,
 				'null'			 => true,
 			],
-			'bank'	     => [
+			'bank1'	     => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 100,
 				'null'			 => true,
@@ -55,6 +55,11 @@ class Migraterekapinvoice extends Migration
 			'nominal1'	     => [
 				'type'           => 'INT',
 				'constraint'     => 11,
+				'null'			 => true,
+			],
+			'bank2'	     => [
+				'type'           => 'VARCHAR',
+				'constraint'     => 100,
 				'null'			 => true,
 			],
 			'tgl_bayar2'	     => [

@@ -161,19 +161,5 @@
         <!-- /.content -->
     </div>
 </section>
-<style>
-    @media print {
-        .btn-default {
-            display: none;
-        }
 
-        .input-group {
-            display: none;
-        }
-
-        .main-footer {
-            display: none;
-        }
-    }
-</style>
 <?= $this->endsection() ?>

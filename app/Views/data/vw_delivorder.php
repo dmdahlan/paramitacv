@@ -238,7 +238,7 @@
 <!-- /.end modal edit -->
 <script type="text/javascript">
     var table;
-    table = $(document).ready(function() {
+    $(document).ready(function() {
         table = $('#delivery').DataTable({
             "processing": true, //Feature control the processing indicator.
             "serverSide": true, //Feature control DataTables' server-side processing mode.
