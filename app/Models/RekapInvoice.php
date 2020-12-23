@@ -7,14 +7,14 @@ use CodeIgniter\Model;
 class RekapInvoice extends Model
 {
     protected $table = 'rekap_invoice';
-    protected $allowedFields = ['tgl_rekap', 'no_inv', 'no_faktur', 'produk_idm', 'nominal', 'ket_rekap', 'bank', 'tgl_bayar1', 'nominal1', 'tgl_bayar2', 'nominal2'];
+    protected $allowedFields = ['tgl_rekap', 'no_inv', 'no_faktur', 'produk_idm', 'nominal', 'ket_rekap', 'bank1', 'tgl_bayar1', 'nominal1', 'tgl_bayar2', 'nominal2'];
     protected $id = 'id_rekap';
     protected $primaryKey = 'id_rekap';
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 
-    protected $column_order = array('id_rekap', 'tgl_rekap', 'no_inv', 'no_faktur', 'customer', 'nominal', 'ppn', 'pph', 'total', 'bank', 'tgl_bayar1', 'nominal1', 'tgl_bayar2', 'nominal2');
-    protected $column_search = array('id_rekap', 'tgl_rekap', 'no_inv', 'no_faktur', 'customer', 'nominal', 'ket_rekap', 'bank', 'tgl_bayar1', 'nominal1', 'tgl_bayar2', 'nominal2');
+    protected $column_order = array('id_rekap', 'tgl_rekap', 'no_inv', 'no_faktur', 'customer', 'nominal', 'ppn', 'pph', 'total', 'bank1', 'tgl_bayar1', 'nominal1');
+    protected $column_search = array('id_rekap', 'tgl_rekap', 'no_inv', 'no_faktur', 'customer', 'nominal', 'ket_rekap', 'bank1', 'tgl_bayar1', 'nominal1');
     protected $order = array('tgl_rekap,rekap_invoice.created_at' => 'desc');
 
     function get_datatables()
