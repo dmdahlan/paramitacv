@@ -14,7 +14,7 @@
                         <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('dashboard'); ?>">Open app</a>
+                        <a class="nav-link" href="<?= base_url('dashboard'); ?>">Open App</a>
                     </li>
                 </ul>
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto navlogin">
