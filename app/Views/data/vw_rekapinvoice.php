@@ -237,6 +237,7 @@
         $('#frm-modal-rekapinv')[0].reset();
         $('#md-form-rekapinv').modal('hide');
         $('.help-block').empty();
+        $("input[type=hidden]").val('');
         $('.is-invalid').removeClass('is-invalid');
     }
 
@@ -280,6 +281,7 @@
                     $('.help-block').empty();
                     $('#frm-modal-rekapinv')[0].reset();
                     $('.is-invalid').removeClass('is-invalid');
+                    $("input[type=hidden]").val('');
                     $('#md-form-rekapinv').modal('hide');
                     alertsukses();
                     reload_table();

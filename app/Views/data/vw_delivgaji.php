@@ -223,6 +223,7 @@
         $('.help-block').empty();
         $('#md-form-gaji').modal('hide');
         $('.is-invalid').removeClass('is-invalid');
+        $("input[type=hidden]").val('');
     }
 
     function tambah_gaji(id) {
@@ -298,6 +299,7 @@
                     $('.help-block').empty();
                     $('.is-invalid').removeClass('is-invalid');
                     $('#frm-modal-gaji')[0].reset();
+                    $("input[type=hidden]").val('');
                     $("input[type=hidden]").val('');
                     $('#md-form-gaji').modal('hide');
                     alertsukses();

@@ -31,4 +31,5 @@
 	</div>
 	<!-- akhir info panel -->
 </div>
+
 <?= $this->endsection() ?>

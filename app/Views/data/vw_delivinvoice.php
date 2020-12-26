@@ -267,6 +267,7 @@
         $('.help-block').empty();
         $('#md-form-invoice').modal('hide');
         $('.is-invalid').removeClass('is-invalid');
+        $("input[type=hidden]").val('');
     }
 
     function tambah_inv(id) {
@@ -347,6 +348,7 @@
                     $('.help-block').empty();
                     $('.is-invalid').removeClass('is-invalid');
                     $('#frm-modal-invoice')[0].reset();
+                    $("input[type=hidden]").val('');
                     $("input[type=hidden]").val('');
                     $('#md-form-invoice').modal('hide');
                     alertsukses();

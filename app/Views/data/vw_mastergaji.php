@@ -173,6 +173,7 @@
         $('#frm-modal-gaji')[0].reset();
         $('#md-form-gaji').modal('hide');
         $('.help-block').empty();
+        $("input[type=hidden]").val('');
         $('.is-invalid').removeClass('is-invalid');
     }
     $('#dari_idm,#tujuan_idm,#tipe').change(function() {
@@ -214,6 +215,7 @@
                     $('.help-block').empty();
                     $('.is-invalid').removeClass('is-invalid');
                     $('#frm-modal-gaji')[0].reset();
+                    $("input[type=hidden]").val('');
                     $('#md-form-gaji').modal('hide');
                     alertsukses();
                     reload_table();

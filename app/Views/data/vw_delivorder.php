@@ -287,6 +287,7 @@
         $('.help-block').empty();
         $('#md-form-deliv').modal('hide');
         $('.is-invalid').removeClass('is-invalid');
+        $("input[type=hidden]").val('');
     }
 
     function refresh() {
@@ -320,7 +321,6 @@
     function tambah_deliv() {
         method = 'save';
         $('#md-form-deliv').modal('show');
-        $("input[type=hidden]").val('');
         $('#modal-title').text('Tambah Data Delivery');
         $('#btnSaveDeliv').text('Simpan');
         $(".select2").select2({
@@ -348,6 +348,7 @@
                     $('.help-block').empty();
                     $('.is-invalid').removeClass('is-invalid');
                     $('#frm-modal-deliv')[0].reset();
+                    $("input[type=hidden]").val('');
                     $('#md-form-deliv').modal('hide');
                     alertsukses();
                     reload_table();
