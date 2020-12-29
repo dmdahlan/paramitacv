@@ -27,7 +27,7 @@ class Driver_gaji extends BaseController
             if ($r->sj_kembali == null) {
                 $row[] = '';
             } else {
-                $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-YY');
+                $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-yy');
             }
             if ($r->tgl_gaji == null) {
                 $row[] = '';

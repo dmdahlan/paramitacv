@@ -37,7 +37,7 @@ class Rekap_invoice extends BaseController
             $no++;
             $row = array();
             $row[] = $no;
-            $row[] = Time::parse($r->tgl_rekap)->toLocalizedString('dd-MMM-YY');
+            $row[] = Time::parse($r->tgl_rekap)->toLocalizedString('dd-MMM-yy');
             $row[] = '<a class="text-orange" href="javascript:void(0)" onclick="edit_rekap(' . "'" . $r->id_rekap . "'" . ')">' . $r->no_inv;
             $row[] = $r->no_faktur;
             $row[] = $r->customer;
@@ -71,7 +71,7 @@ class Rekap_invoice extends BaseController
             if ($r->tgl_bayar1 == null) {
                 $row[] = '';
             } else {
-                $row[] = Time::parse($r->tgl_bayar1)->toLocalizedString('dd-MMM-YY');
+                $row[] = Time::parse($r->tgl_bayar1)->toLocalizedString('dd-MMM-yy');
             }
             $row[] = $this->rupiah($r->nominal1);
             // if ($r->tgl_bayar2 == null) {

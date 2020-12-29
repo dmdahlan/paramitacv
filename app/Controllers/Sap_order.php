@@ -23,7 +23,7 @@ class Sap_order extends BaseController
             $no++;
             $row = array();
             $row[] = $no;
-            $row[] = Time::parse($r->tgl_sap)->toLocalizedString('dd-MMM-YY');
+            $row[] = Time::parse($r->tgl_sap)->toLocalizedString('dd-MMM-yy');
             $row[] = $r->fo;
             // $row[] = $r->fr;
             $row[] = $r->nama;

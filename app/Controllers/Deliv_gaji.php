@@ -28,14 +28,14 @@ class Deliv_gaji extends BaseController
             if ($r->sj_kembali == null) {
                 $row[] = '';
             } else {
-                $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-YY');
+                $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-yy');
             }
             if ($r->tgl_gaji == null) {
                 $row[] = '';
             } else {
                 $row[] = Time::parse($r->tgl_gaji)->toLocalizedString('MMM-YYYY');
             }
-            $row[] = Time::parse($r->tgl)->toLocalizedString('dd-MMM-YY');
+            $row[] = Time::parse($r->tgl)->toLocalizedString('dd-MMM-yy');
             $row[] = $r->nama;
             $row[] = $r->shipment;
             $row[] = $r->nopol;

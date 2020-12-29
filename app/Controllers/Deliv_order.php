@@ -25,11 +25,11 @@ class Deliv_order extends BaseController
             $no++;
             $row = array();
             $row[] = $no;
-            $row[] = Time::parse($r->tgl)->toLocalizedString('dd-MMM-YY');
+            $row[] = Time::parse($r->tgl)->toLocalizedString('dd-MMM-yy');
             if ($r->sj_kembali == null) {
                 $row[] = '';
             } else {
-                $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-YY');
+                $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-yy');
             }
             $row[] = $r->no_sj;
             $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="edit_deliv(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;

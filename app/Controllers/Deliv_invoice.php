@@ -24,7 +24,7 @@ class Deliv_invoice extends BaseController
             $no++;
             $row = array();
             $row[] = $no;
-            $row[] = Time::parse($r->tgl_deliv)->toLocalizedString('dd-MMM-YY');
+            $row[] = Time::parse($r->tgl_deliv)->toLocalizedString('dd-MMM-yy');
             $row[] = $r->nopol;
             $row[] = $r->orderan;
             $row[] = $r->dari . ' - ' . $r->tujuan;
@@ -35,7 +35,7 @@ class Deliv_invoice extends BaseController
             if ($r->tgl_inv == null) {
                 $row[] = '';
             } else {
-                $row[] = Time::parse($r->tgl_inv)->toLocalizedString('dd-MMM-YY');
+                $row[] = Time::parse($r->tgl_inv)->toLocalizedString('dd-MMM-yy');
             }
             $row[] = $r->no_inv;
             $row[] = $r->billing;
