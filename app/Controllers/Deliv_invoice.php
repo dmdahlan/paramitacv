@@ -134,6 +134,11 @@ class Deliv_invoice extends BaseController
                 $data['error_string'][] = $validation->getError('tgl_inv');
                 $data['status'] = FALSE;
             }
+            if ($validation->hasError('deliv_idm')) {
+                $data['inputerror'][] = 'deliv_idm';
+                $data['error_string'][] = $validation->getError('deliv_idm');
+                $data['status'] = FALSE;
+            }
             if ($data['status'] === FALSE) {
                 echo json_encode($data);
                 exit();
@@ -144,14 +149,22 @@ class Deliv_invoice extends BaseController
     {
         if ($method == 'save') {
             $tgl_inv            = 'required';
+            $deliv_idm          = 'required|is_unique[deliv_invoice.deliv_idm]';
         } else {
             $tgl_inv            = 'required';
+            $deliv_idm          = 'required|is_unique[deliv_invoice.deliv_idm,idm_inv,{id}]';
         }
         $rulesValidation = [
             'tgl_inv' => [
                 'rules' => $tgl_inv,
                 'errors' => [
                     'required' => 'Tanggal harus diisi.'
+                ]
+            ], 'deliv_idm' => [
+                'rules' => $deliv_idm,
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'is_unique' => '{field} sudah ada'
                 ]
             ]
         ];

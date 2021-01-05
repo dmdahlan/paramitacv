@@ -71,6 +71,7 @@ class Deliv_gaji extends BaseController
     }
     public function simpan_gaji()
     {
+        $this->_validate('save');
         $data = [
             'deliv_idm'       => $this->request->getVar('deliv_idm'),
             'tgl_gaji'        => $this->request->getVar('tgl_gaji')
@@ -90,7 +91,8 @@ class Deliv_gaji extends BaseController
     {
         $data = [
             'idm_gaji'         => $this->request->getVar('id'),
-            'tgl_gaji'        => $this->request->getVar('tgl_gaji')
+            'deliv_idm'        => $this->request->getVar('deliv_idm'),
+            'tgl_gaji'         => $this->request->getVar('tgl_gaji')
         ];
 
         if ($this->deliverygaji->save($data)) {
@@ -106,5 +108,56 @@ class Deliv_gaji extends BaseController
         } else {
             echo json_encode(['status' => FALSE]);
         }
+    }
+    public function _validate($method)
+    {
+        if (!$this->validate($this->_getRulesValidation($method))) {
+            $validation = \Config\Services::validation();
+
+            $data = [];
+            $data['error_string'] = [];
+            $data['inputerror'] = [];
+            $data['status'] = TRUE;
+
+            if ($validation->hasError('tgl_gaji')) {
+                $data['inputerror'][] = 'tgl_gaji';
+                $data['error_string'][] = $validation->getError('tgl_gaji');
+                $data['status'] = FALSE;
+            }
+            if ($validation->hasError('deliv_idm')) {
+                $data['inputerror'][] = 'deliv_idm';
+                $data['error_string'][] = $validation->getError('deliv_idm');
+                $data['status'] = FALSE;
+            }
+            if ($data['status'] === FALSE) {
+                echo json_encode($data);
+                exit();
+            }
+        }
+    }
+    public function _getRulesValidation($method = null)
+    {
+        if ($method == 'save') {
+            $tgl_gaji            = 'required';
+            $deliv_idm           = 'required|is_unique[deliv_gaji.deliv_idm]';
+        } else {
+            $tgl_gaji            = 'required';
+            $deliv_idm           = 'required|is_unique[deliv_gaji.deliv_idm,idm_gaji,{id}]';
+        }
+        $rulesValidation = [
+            'tgl_gaji' => [
+                'rules' => $tgl_gaji,
+                'errors' => [
+                    'required' => 'Tanggal harus diisi.'
+                ]
+            ], 'deliv_idm' => [
+                'rules' => $deliv_idm,
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'is_unique' => '{field} sudah ada'
+                ]
+            ]
+        ];
+        return $rulesValidation;
     }
 }
