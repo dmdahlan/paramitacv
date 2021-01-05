@@ -11,7 +11,6 @@ class DelivInvoice extends Model
     protected $id = 'idm_inv';
     protected $primaryKey = 'idm_inv';
     protected $useTimestamps = true;
-    protected $useSoftDeletes = true;
 
     protected $column_order = array('idm_deliv', 'deliv_order.tgl', 'orderan', 'dari', 'tujuan', 'master_unit.nopol', 'orderan', 'dari', 'outlet', 'customer', 'shipment', 'qty', 'tgl_inv', 'no_inv', 'billing', 'produk', 'shipment');
     protected $column_search = array('idm_deliv', 'deliv_order.tgl', 'orderan', 'dari', 'tujuan', 'master_unit.nopol', 'orderan', 'dari', 'outlet', 'customer', 'shipment', 'qty', 'tgl_inv', 'no_inv', 'billing', 'produk', 'shipment');

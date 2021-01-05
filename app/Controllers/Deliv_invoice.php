@@ -48,6 +48,7 @@ class Deliv_invoice extends BaseController
             } else {
                 $row[] =
                     '<a class="btn btn-warning btn-xs" href="javascript:void(0)" title="Edit" onclick="edit_inv(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
+                    <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="Edit" onclick="hapus_inv(' . "'" . $r->idm_inv . "'" . ')">hapus</a>
                     ';
             }
             $total += $r->nominal;
