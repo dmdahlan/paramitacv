@@ -300,7 +300,6 @@
                     $('.is-invalid').removeClass('is-invalid');
                     $('#frm-modal-gaji')[0].reset();
                     $("input[type=hidden]").val('');
-                    $("input[type=hidden]").val('');
                     $('#md-form-gaji').modal('hide');
                     alertsukses();
                     reload_table();

@@ -61,6 +61,7 @@ class BaseController extends Controller
 		$this->delivery 			= new \App\Models\DelivOrder;
 		$this->deliveryinvoice 		= new \App\Models\DelivInvoice;
 		$this->deliverygaji 		= new \App\Models\DelivGaji;
+		$this->deliverybiaya 		= new \App\Models\DelivBiaya;
 
 		$this->reportmuatan 	    = new \App\Models\ReportMuatan;
 		$this->reportunitbulan 	    = new \App\Models\ReportUnit;
