@@ -194,7 +194,7 @@
                                 <div class="form-group">
                                     <label class="form-label">Buruh Muat</label>
                                     <input id="jml_buruhmuatt" name="jml_buruhmuatt" class="form-control" type="text" placeholder="nominal" onkeyup="hitung()">
-                                    <input type="text" id="jml_buruhmuat" name="jml_buruhmuat">
+                                    <input type="hidden" id="jml_buruhmuat" name="jml_buruhmuat">
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
