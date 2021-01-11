@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class DelivBiaya extends Model
 {
     protected $table = 'deliv_biaya';
-    protected $allowedFields = ['deliv_idm', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruh_muat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total'];
+    protected $allowedFields = ['deliv_idm', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total'];
     protected $id = 'id_biaya';
     protected $primaryKey = 'id_biaya';
     protected $useTimestamps = true;
