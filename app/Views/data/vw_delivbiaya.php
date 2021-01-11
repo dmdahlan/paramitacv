@@ -440,9 +440,9 @@
                 $('#tgl_buruhmuat').val(data.tgl_buruhmuat);
                 $('#jml_buruhmuat').val(data.jml_buruhmuat);
                 $('#jml_buruhmuatt').val(data.jml_buruhmuat);
-                $('#tgl_bongkar').val(data.tgl_buruhbongkar);
-                $('#jml_bongkar').val(data.jml_buruhbongkar);
-                $('#jml_bongkarr').val(data.jml_buruhbongkar);
+                $('#tgl_buruhbongkar').val(data.tgl_buruhbongkar);
+                $('#jml_buruhbongkar').val(data.jml_buruhbongkar);
+                $('#jml_buruhbongkarr').val(data.jml_buruhbongkar);
                 $('#tgl_lain2').val(data.tgl_lain2);
                 $('#jml_lain2').val(data.jml_lain2);
                 $('#jml_lain22').val(data.jml_lain2);
