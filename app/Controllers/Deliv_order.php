@@ -32,11 +32,7 @@ class Deliv_order extends BaseController
                 $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-yy');
             }
             $row[] = $r->no_sj;
-            if ($r->deliv_idm != null) {
-                $row[] = $r->nopol;
-            } else {
-                $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="edit_deliv(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
-            }
+            $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="edit_deliv(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
             $row[] = $r->orderan;
             $row[] = $r->nama;
             $row[] = $r->lokasi_awal;
@@ -50,7 +46,8 @@ class Deliv_order extends BaseController
             $row[] = $r->claim;
             // $row[] = $r->idm_deliv;
             if ($r->deliv_idm != null) {
-                $row[] = '';
+                $row[] = '
+                     <a class="btn btn-warning btn-xs" href="javascript:void(0)" title="Edit" onclick="edit_deliv(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>';
             } else {
                 $row[] = '
                      <a class="btn btn-warning btn-xs" href="javascript:void(0)" title="Edit" onclick="edit_deliv(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
