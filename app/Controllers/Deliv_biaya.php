@@ -229,11 +229,6 @@ class Deliv_biaya extends BaseController
             $data['inputerror'] = [];
             $data['status'] = TRUE;
 
-            if ($validation->hasError('tgl_1')) {
-                $data['inputerror'][] = 'tgl_1';
-                $data['error_string'][] = $validation->getError('tgl_1');
-                $data['status'] = FALSE;
-            }
             if ($validation->hasError('deliv_idm')) {
                 $data['inputerror'][] = 'deliv_idm';
                 $data['error_string'][] = $validation->getError('deliv_idm');
@@ -248,19 +243,12 @@ class Deliv_biaya extends BaseController
     public function _getRulesValidation($method = null)
     {
         if ($method == 'save') {
-            $tgl_1            = 'required';
             $deliv_idm        = 'required|is_unique[deliv_biaya.deliv_idm]';
         } else {
-            $tgl_1            = 'required';
             $deliv_idm        = 'required|is_unique[deliv_biaya.deliv_idm,id_biaya,{id}]';
         }
         $rulesValidation = [
-            'tgl_1' => [
-                'rules' => $tgl_1,
-                'errors' => [
-                    'required' => 'Tanggal harus diisi.'
-                ]
-            ], 'deliv_idm' => [
+            'deliv_idm' => [
                 'rules' => $deliv_idm,
                 'errors' => [
                     'required' => '{field} harus diisi',
