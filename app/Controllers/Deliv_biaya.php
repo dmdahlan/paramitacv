@@ -74,7 +74,7 @@ class Deliv_biaya extends BaseController
             $row[] = $r->ket_biaya;
             $row[] = $this->rupiah($r->total);
             // opsi
-            if ($r->tgl_1 == '') {
+            if ($r->total == '') {
                 $row[] =
                     '<a class="btn btn-warning btn-xs" href="javascript:void(0)" title="tambah" onclick="tambah_biaya(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
                     ';
