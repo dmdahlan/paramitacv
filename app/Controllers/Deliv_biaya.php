@@ -30,7 +30,7 @@ class Deliv_biaya extends BaseController
             $row = array();
             $row[] = $no;
             $row[] = Time::parse($r->tgl_deliv)->toLocalizedString('dd-MMM-yy');
-            if ($r->tgl_1 == '') {
+            if ($r->total == '') {
                 $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="tambah_biaya(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
             } else {
                 $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="edit_biaya(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
