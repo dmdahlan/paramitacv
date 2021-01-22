@@ -72,6 +72,8 @@
                                         <th>NO INV</th>
                                         <th>BILLING</th>
                                         <th>TARIF</th>
+                                        <th>BIAYA</th>
+                                        <th>INVOICE</th>
                                         <!-- <th>ID</th> -->
                                         <th>OPSI</th>
                                     </tr>

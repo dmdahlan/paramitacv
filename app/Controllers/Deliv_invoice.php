@@ -43,6 +43,7 @@ class Deliv_invoice extends BaseController
             $row[] = $r->no_inv;
             $row[] = $r->billing;
             $row[] = $this->rupiah($r->nominal);
+            $row[] = $this->rupiah($r->ttlbiaya);
             // $row[] = $r->idm_deliv;
             if ($r->tgl_inv == '') {
                 $row[] =
