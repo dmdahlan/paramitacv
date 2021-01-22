@@ -12,8 +12,8 @@ class DelivInvoice extends Model
     protected $primaryKey = 'idm_inv';
     protected $useTimestamps = true;
 
-    protected $column_order = array('idm_deliv', 'deliv_order.tgl', 'orderan', 'dari', 'tujuan', 'master_unit.nopol', 'orderan', 'dari', 'outlet', 'customer', 'shipment', 'qty', 'tgl_inv', 'no_inv', 'billing', 'produk', 'shipment');
-    protected $column_search = array('idm_deliv', 'deliv_order.tgl', 'orderan', 'dari', 'tujuan', 'master_unit.nopol', 'orderan', 'dari', 'outlet', 'customer', 'shipment', 'qty', 'tgl_inv', 'no_inv', 'billing', 'produk', 'shipment');
+    protected $column_order = array('idm_deliv', 'deliv_order.tgl', 'master_unit.nopol', 'orderan', 'dari', 'tujuan', 'customer', 'shipment', 'qty', 'tgl_inv', 'no_inv', 'billing', 'produk', 'shipment');
+    protected $column_search = array('idm_deliv', 'deliv_order.tgl', 'orderan', 'dari', 'tujuan', 'master_unit.nopol', 'dari', 'outlet', 'customer', 'shipment', 'qty', 'tgl_inv', 'no_inv', 'billing', 'produk', 'shipment');
     protected $order = array('tgl_deliv' => 'desc');
 
     function get_datatables()
