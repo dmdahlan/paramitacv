@@ -25,7 +25,11 @@ class Deliv_invoice extends BaseController
             $row = array();
             $row[] = $no;
             $row[] = Time::parse($r->tgl_deliv)->toLocalizedString('dd-MMM-yy');
-            $row[] = $r->nopol;
+            if ($r->total == '') {
+                $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="tambah_inv(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
+            } else {
+                $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="edit_inv(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
+            }
             $row[] = $r->orderan;
             $row[] = $r->dari . ' - ' . $r->tujuan;
             $row[] = $r->outlet;
