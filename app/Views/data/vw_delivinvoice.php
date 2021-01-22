@@ -71,9 +71,8 @@
                                         <th>TGL INV</th>
                                         <th>NO INV</th>
                                         <th>BILLING</th>
-                                        <th>TARIF</th>
-                                        <th>BIAYA</th>
                                         <th>INVOICE</th>
+                                        <th>BIAYA</th>
                                         <!-- <th>ID</th> -->
                                         <th>OPSI</th>
                                     </tr>

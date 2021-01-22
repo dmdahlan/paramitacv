@@ -59,7 +59,7 @@ class Deliv_invoice extends BaseController
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), '', ''
+            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), '', '', ''
         );
         $output = array(
             "draw" => @$_POST['draw'],
