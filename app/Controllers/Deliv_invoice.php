@@ -25,14 +25,13 @@ class Deliv_invoice extends BaseController
             $row = array();
             $row[] = $no;
             $row[] = Time::parse($r->tgl_deliv)->toLocalizedString('dd-MMM-yy');
-            if ($r->total == '') {
+            if ($r->tgl_inv == '') {
                 $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="tambah_inv(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
             } else {
                 $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="edit_inv(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
             }
             $row[] = $r->orderan;
             $row[] = $r->dari . ' - ' . $r->tujuan;
-            $row[] = $r->outlet;
             $row[] = $r->customer;
             $row[] = $r->shipment;
             $row[] = $r->qty;
@@ -59,7 +58,7 @@ class Deliv_invoice extends BaseController
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), '', ''
+            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), '', ''
         );
         $output = array(
             "draw" => @$_POST['draw'],

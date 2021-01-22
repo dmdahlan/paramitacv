@@ -65,7 +65,6 @@
                                         <th>NO POLISI</th>
                                         <th>TYPE</th>
                                         <th>DARI - TUJUAN</th>
-                                        <th>OUTLET</th>
                                         <th>CUSTOMER</th>
                                         <th>SHIPMENT</th>
                                         <th>Qty</th>
