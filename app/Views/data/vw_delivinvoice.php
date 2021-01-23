@@ -73,6 +73,8 @@
                                         <th>BILLING</th>
                                         <th>INVOICE</th>
                                         <th>BIAYA</th>
+                                        <th>GAJI</th>
+                                        <th>MARGIN</th>
                                         <!-- <th>ID</th> -->
                                         <th>OPSI</th>
                                     </tr>
@@ -228,7 +230,7 @@
                 },
             },
             "columnDefs": [{
-                "targets": [11],
+                "targets": [11, 12, 13],
                 "className": 'text-right'
             }]
         });

@@ -27,13 +27,14 @@ class DelivInvoice extends Model
     private function _get_datatables_query()
     {
         $this->dt = $this->db->table('deliv_order')
+            ->join('master_gaji', 'master_gaji.ketjuan=deliv_order.ketjuan', 'left')
             ->join('deliv_invoice', 'deliv_invoice.deliv_idm = deliv_order.idm_deliv', 'left')
             ->join('deliv_biaya', 'deliv_biaya.deliv_idm = deliv_order.idm_deliv', 'left')
             ->join('master_unit', 'master_unit.idm_nopol = deliv_order.nopol_idm', 'left')
             ->join('master_dari', 'master_dari.idm_dari = deliv_order.dari_idm', 'left')
             ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuan_idm', 'left')
             ->join('master_produk', 'master_produk.idm_produk = deliv_order.produk_idm', 'left')
-            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari, master_tujuan.tujuan,master_produk.produk,deliv_invoice.idm_inv,deliv_invoice.tgl_inv,deliv_invoice.no_inv,deliv_invoice.billing,deliv_invoice.nominal,master_produk.customer,deliv_biaya.total as ttlbiaya');
+            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari, master_tujuan.tujuan,master_produk.produk,deliv_invoice.idm_inv,deliv_invoice.tgl_inv,deliv_invoice.no_inv,deliv_invoice.billing,deliv_invoice.nominal,master_produk.customer,deliv_biaya.total as ttlbiaya,master_gaji.gaji');
         $this->dt->where('deliv_order.deleted_at', null);
 
         $request = \Config\Services::request();

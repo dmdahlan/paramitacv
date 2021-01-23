@@ -19,6 +19,8 @@ class Deliv_invoice extends BaseController
         $data = array();
         $no = @$_POST['start'];
         $total = 0;
+        $totalbiaya = 0;
+        $totalgaji = 0;
 
         foreach ($list as $r) {
             $no++;
@@ -44,6 +46,8 @@ class Deliv_invoice extends BaseController
             $row[] = $r->billing;
             $row[] = $this->rupiah($r->nominal);
             $row[] = $this->rupiah($r->ttlbiaya);
+            $row[] = $this->rupiah($r->gaji);
+            $row[] = $this->rupiah($r->nominal - $r->ttlbiaya - $r->gaji);
             // $row[] = $r->idm_deliv;
             if ($r->tgl_inv == '') {
                 $row[] =
@@ -56,10 +60,13 @@ class Deliv_invoice extends BaseController
                     ';
             }
             $total += $r->nominal;
+            $totalbiaya += $r->ttlbiaya;
+            $totalgaji += $r->gaji;
+            $margin = $total - $totalbiaya - $totalgaji;
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), '', '', ''
+            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($totalbiaya), $this->rupiah($margin), $this->rupiah($totalgaji), '', ''
         );
         $output = array(
             "draw" => @$_POST['draw'],
