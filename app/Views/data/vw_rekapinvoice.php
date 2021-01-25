@@ -321,6 +321,7 @@
                 $('#ket_rekap').val(data.ket_rekap);
                 $('#bank1').val(data.bank1);
                 $('#tgl_bayar1').val(data.tgl_bayar1);
+                $('#nominal1').val(data.nominal1);
                 $('#nominall1').val(data.nominal1);
                 // $('#tgl_bayar2').val(data.tgl_bayar2);
                 // $('#nominall2').val(data.nominal2);
