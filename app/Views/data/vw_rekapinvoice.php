@@ -149,7 +149,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label class="form-label">BANK</label>
-                                    <select id="bank1" name="brand_id" class="form-control">
+                                    <select id="bank1" name="bank1" class="form-control">
                                         <option value="">Pilih</option>
                                         <option value="danamon">Danamon</option>
                                         <option value="bca">BCA</option>
