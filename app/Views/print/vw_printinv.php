@@ -1,165 +1,222 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
-<section class="content-wrapper">
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4>Print Invoice</h4>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Printa Invoice</li>
-                        </ol>
+<style>
+    @media print {
+        .btn {
+            display: none;
+        }
+
+        .form-control-sm {
+            display: none;
+        }
+
+        .main-footer {
+            display: none;
+        }
+    }
+</style>
+<?php
+
+use CodeIgniter\I18n\Time;
+?>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>PRINT INVOICE</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">PRINT INVOICE</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="invoice">
+        <!-- title row -->
+        <div class="row">
+            <form action="" method="POST">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-sm" name="keyword" placeholder="no invoice" value="<?= $ket['no_inv']; ?>">
+                    <div class="input-group-append">
+                        <button class="btn btn-default btn-sm" type="submit">cari</button>
+                        <a onclick="window.print()" class="btn btn-default btn-sm"><i class="fas fa-print"></i> Print</a>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
-        </section>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="page-header">
+                    <img src="<?= base_url('img/paramita.png') ?>" width="200px" alt="">
+                </h2>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- info row -->
+        <div class="row invoice-info">
+            <div class="col-sm-1 invoice-col">
+                <address>
+                    <strong> <u>INVOICE</u> </strong>
+                </address>
+            </div>
+        </div>
+        <div class="row invoice-info">
+            <div class="col-sm-1 invoice-col">
+                <address>
+                    INVOICE<br>
+                    TANGGAL
+                </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-1 invoice-col">
+                <address>
+                    :<br>
+                    :
+                </address>
+            </div>
 
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <img src="<?= base_url(''); ?>/img/logao.png" width="200px" alt="">
-                                    </div>
-                                    <form action="" method="POST">
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control form-control-sm" name="keyword" placeholder="no invoice">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-default btn-sm" type="submit">cari</button>
-                                                <a onclick="window.print()" class="btn btn-default btn-sm"><i class="fas fa-print"></i> Print</a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="row invoice-info">
-                                    <div class="col-sm-8 invoice-col">
-                                    </div>
-                                    <div class="col-sm-2 invoice-col">
-                                        <strong>INVOICE TO:</strong>
-                                    </div>
-                                </div>
-                                <div class="row invoice-info">
-                                    <div class="col-sm-8 invoice-col">
-                                    </div>
-                                    <div class="col-sm-3 invoice-col">
-                                        <strong>PT. Coca-Cola Distribution Indonesia</strong>
-                                    </div>
-                                </div>
-                                <div class="row invoice-info">
-                                    <div class="col-sm-2 invoice-col">
-                                        <address>
-                                            Invoice<br>
-                                            Tanggal<br>
-                                        </address>
-                                    </div>
-                                    <div class="col-sm-1 invoice-col">
-                                        <address>
-                                            :<br>
-                                            :<br>
-                                        </address>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-5 invoice-col">
-                                        <b>121 prmt</b><br>
-                                        <b>20 November</b><br>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-4 invoice-col">
-                                        <b>Jl. Teuku umar km.46</b><br>
-                                        <b>Cibitung - Bekasi</b><br>
-                                        <b>Indonesia 1720</b>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body table table-responsive table-sm" style="font-size: 14px;">
-                                <table class="table table-bordered table-hover table-striped js-basic-example dataTable nowrap cell-border" cellspacing="0" width="100%" role="grid">
-                                    <thead>
-                                        <tr class="bg-info">
-                                            <th>NO</th>
-                                            <th>TANGGAL</th>
-                                            <th>NO POLISI</th>
-                                            <th>TYPE</th>
-                                            <th>AREA</th>
-                                            <th>NO RC</th>
-                                            <th>NAMA OUTLET</th>
-                                            <th>QTY in PC</th>
-                                            <th>TARIF</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $i = 1;
-                                        $totalqty = 0;
-                                        $totalharga = 0;
-                                        $totalppn = 0;
-                                        $totalpph = 0;
-                                        $totalgrand = 0;
-                                        ?>
-                                        <?php foreach ($invoice as $inv) : ?>
-                                            <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $inv['tgl'] ?></td>
-                                                <td><?= $inv['nopol'] ?></td>
-                                                <td><?= $inv['orderan'] ?></td>
-                                                <td><?= $inv['dari'] ?></td>
-                                                <td><?= $inv['shipment'] ?></td>
-                                                <td><?= $inv['outlet'] ?></td>
-                                                <td><?= $inv['qty'] ?></td>
-                                                <td><?= $inv['nominal'] ?></td>
-                                            </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                    <tr>
-                                        <th colspan="7" class="text-center">a</th>
-                                        <th rowspan="7">a</th>
-                                        <th rowspan="7">8</th>
-                                    </tr>
-                                </table>
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="card border-dark mt-2" style="max-width: 20rem;">
-                                                <div class="card-body text-dark">
-                                                    <p>Keterangan :</p>
-                                                    <p>Dana dapat ditransfer ke rekening atas nama:</p>
-                                                    <p>CV. Paramita</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-2">
-                                            Balikpapan, 02 Desember 2020
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8">
+            <div class="col-sm-5 invoice-col">
+                <address>
+                    <?= $ket['no_inv'] ?><br>
+                    <?= Time::parse($ket['tgl_inv'])->toLocalizedString('dd MMMM yyyy') ?>
+                </address>
+            </div>
+            <div class="col-sm-4 invoice-col">
+                <address class="float-right">
+                    <strong>INVOICE TO :</strong><br>
+                    <?= $ket['customer'] ?> <br>
+                    <?= $ket['alamat'] ?>
+                </address>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
 
-                                        </div>
-                                        <div class="col-md-4">
-                                            Pranawingrum
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card -->
-                    </div>
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-12  table-sm" style="font-size: 14px;">
+                <table class="table" width="100%" style="border: 1px solid black">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid black">NO</th>
+                            <th style="border: 1px solid black">TANGGAL</th>
+                            <th style="border: 1px solid black">NO POLISI</th>
+                            <th style="border: 1px solid black">TYPE</th>
+                            <th style="border: 1px solid black">AREA</th>
+                            <th style="border: 1px solid black">NO SHIPMENT</th>
+                            <th style="border: 1px solid black">QTY</th>
+                            <th style="border: 1px solid black">TARIF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+
+
+                        $i = 1;
+                        $total_inv = 0;
+                        $ppn = 0;
+                        $pph = 0;
+                        $grand_total = 0;
+                        ?>
+                        <?php foreach ($invoice as $r) : ?>
+                            <tr>
+                                <td style="border: 1px solid black"><?= $i++ ?></td>
+                                <td style="border: 1px solid black"><?= $r['tgl'] ?></td>
+                                <td style="border: 1px solid black"><?= $r['nopol'] ?></td>
+                                <td style="border: 1px solid black"><?= $r['jenis'] ?></td>
+                                <td style="border: 1px solid black"><?= $r['dari'] . ' - ' . $r['tujuan'] ?></td>
+                                <td style="border: 1px solid black"><?= $r['shipment'] ?></td>
+                                <td style="border: 1px solid black"><?= number_format($r['qty'], 0, ',', '.') ?></td>
+                                <td style="border: 1px solid black" class="text-right"><?= number_format($r['nominal'], 0, ',', '.') ?></td>
+                                <?php $total_inv += $r['nominal'] ?>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class=" row">
+            <!-- accepted payments column -->
+            <div class="col-7">
+                <p>KETERANGAN:</p>
+                <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                    Dana dapat ditransfer ke rekening atas nama: <br>
+                    CV. PARAMITA <br>
+                    Bank Danamon Cabang BALIKPAPAN <br>
+                    Primagiro No 33109547
+                </p>
+
+            </div>
+            <!-- /.col -->
+            <div class="col-4 table-sm" style="font-size: 14px;">
+                <div class=" table-responsive">
+                    <table class="table" rules=rows>
+                        <?php
+                        if ($ket['ppninv'] == 1) {
+                            $ppn = $total_inv * 10 / 100;
+                        } else {
+                            $ppn = null;
+                        }
+                        if ($ket['pphinv'] == 1) {
+                            $pph = $total_inv * 2 / 100;
+                        } else {
+                            $pph = null;
+                        }
+                        $grand_total = $total_inv + $ppn - $pph;
+                        ?>
+                        <tr>
+                            <th></th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th style="width:30%">Total</th>
+                            <td>:</td>
+                            <td class="text-right"><?= number_format($total_inv, 0, ',', '.') ?></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>PPN 10%</th>
+                            <td>:</td>
+                            <td class="text-right"><?= number_format($ppn, 0, ',', '.') ?></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>PPH 2%</th>
+                            <td>:</td>
+                            <td class="text-right"><?= number_format($pph, 0, ',', '.') ?></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Grand Total:</th>
+                            <td>:</td>
+                            <td class="text-right"><?= number_format($grand_total, 0, ',', '.') ?></td>
+                            <td></td>
+                        </tr>
+                    </table>
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-</section>
-
+            </div>
+            <!-- /.col -->
+            <div class="col-8">
+            </div>
+            <div class="col-4">
+                <p><strong>Balikpapan, <?= Time::parse($ket['tgl_inv'])->toLocalizedString('dd MMMM yyyy') ?></strong></p><br><br><br><br>
+                <p class="mt-5"><strong>Pranawingrum</strong></p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
 <?= $this->endsection() ?>
