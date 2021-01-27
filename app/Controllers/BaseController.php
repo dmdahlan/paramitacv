@@ -56,6 +56,7 @@ class BaseController extends Controller
 		$this->masterdriver 		= new \App\Models\MasterDriver;
 		$this->masterproduk 		= new \App\Models\MasterProduk;
 		$this->mastergaji 			= new \App\Models\MasterGaji;
+		$this->masterinvoice 		= new \App\Models\MasterInvoice;
 		$this->masteroutlet 		= new \App\Models\MasterOutlet;
 
 		$this->delivery 			= new \App\Models\DelivOrder;

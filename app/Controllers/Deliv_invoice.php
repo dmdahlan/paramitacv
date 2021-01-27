@@ -48,6 +48,7 @@ class Deliv_invoice extends BaseController
             $row[] = $this->rupiah($r->ttlbiaya);
             $row[] = $this->rupiah($r->gaji);
             $row[] = $this->rupiah($r->nominal - $r->ttlbiaya - $r->gaji);
+            $row[] = $this->rupiah($r->tarif);
             // $row[] = $r->idm_deliv;
             if ($r->tgl_inv == '') {
                 $row[] =
@@ -66,7 +67,7 @@ class Deliv_invoice extends BaseController
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($totalbiaya), $this->rupiah($margin), $this->rupiah($totalgaji), '', ''
+            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($totalbiaya), $this->rupiah($margin), $this->rupiah($totalgaji), '', '', ''
         );
         $output = array(
             "draw" => @$_POST['draw'],
