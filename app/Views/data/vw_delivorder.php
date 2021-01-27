@@ -248,8 +248,11 @@
             "order": [], //Initial no order.
             "autowidth": true,
             "ordering": true,
-            // "scrollY": true,
+            // "scrollY": 350,
             // "scrollX": true,
+            // "fixedColumns": {
+            //     "leftColumns": 3
+            // },
             "lengthMenu": [
                 [10, 100, 500, 1500],
                 [10, 100, 500, 1500]

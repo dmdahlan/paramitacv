@@ -216,6 +216,12 @@
             "order": [], //Initial no order.
             "autowidth": true,
             "ordering": true,
+            "scrollY": 350,
+            "scrollX": true,
+            "lengthMenu": [
+                [10, 100, 500, 1500],
+                [10, 100, 500, 1500]
+            ],
             // Load data for the table's content from an Ajax source
             ajax: {
                 "url": "<?php echo site_url('deliv_invoice/ajax_list'); ?>",
