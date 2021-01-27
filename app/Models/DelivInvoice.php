@@ -58,7 +58,7 @@ class DelivInvoice extends Model
             $this->dt->where('no_inv !=', null);
         }
         if ($request->getVar('tgldeliv')) {
-            $this->dt->where('tgl', $request->getVar('tgldeliv'));
+            $this->dt->like('tgl', $request->getVar('tgldeliv'));
         }
         $i = 0;
         foreach ($this->column_search as $item) {

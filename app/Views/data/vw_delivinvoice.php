@@ -433,9 +433,11 @@
         format: "yyyy-mm-dd"
     }).datepicker("setDate", new Date());
     $('.tanggall').datepicker({
-        autoclose: true,
-        todayHighlight: true,
-        format: "yyyy-mm-dd"
+        startView: "months",
+        minViewMode: "months",
+        format: 'yyyy-mm'
+    }).on('change', function() {
+        $('.datepicker').hide();
     });
     $('.uang').mask('000.000.000.000', {
         reverse: true
