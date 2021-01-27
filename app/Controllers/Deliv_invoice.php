@@ -18,9 +18,11 @@ class Deliv_invoice extends BaseController
         $list = $this->deliveryinvoice->get_datatables();
         $data = array();
         $no = @$_POST['start'];
+        $nominal = 0;
         $total = 0;
         $totalbiaya = 0;
         $totalgaji = 0;
+        $margin = 0;
 
         foreach ($list as $r) {
             $no++;
@@ -42,13 +44,17 @@ class Deliv_invoice extends BaseController
             } else {
                 $row[] = Time::parse($r->tgl_inv)->toLocalizedString('dd-MMM-yy');
             }
+            if ($r->tgl_inv == '') {
+                $nominal = $r->tarif;
+            } else {
+                $nominal = $r->nominal;
+            }
             $row[] = $r->no_inv;
             $row[] = $r->billing;
-            $row[] = $this->rupiah($r->nominal);
+            $row[] = $this->rupiah($nominal);
             $row[] = $this->rupiah($r->ttlbiaya);
             $row[] = $this->rupiah($r->gaji);
-            $row[] = $this->rupiah($r->nominal - $r->ttlbiaya - $r->gaji);
-            $row[] = $this->rupiah($r->tarif);
+            $row[] = $this->rupiah($nominal - $r->ttlbiaya - $r->gaji);
             // $row[] = $r->idm_deliv;
             if ($r->tgl_inv == '') {
                 $row[] =
@@ -60,14 +66,14 @@ class Deliv_invoice extends BaseController
                     <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="Edit" onclick="hapus_inv(' . "'" . $r->idm_inv . "'" . ')">hapus</a>
                     ';
             }
-            $total += $r->nominal;
+            $total += $nominal;
             $totalbiaya += $r->ttlbiaya;
             $totalgaji += $r->gaji;
             $margin = $total - $totalbiaya - $totalgaji;
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($totalbiaya), $this->rupiah($margin), $this->rupiah($totalgaji), '', '', ''
+            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($totalbiaya), $this->rupiah($margin), $this->rupiah($totalgaji), '', ''
         );
         $output = array(
             "draw" => @$_POST['draw'],

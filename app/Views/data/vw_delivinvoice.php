@@ -76,7 +76,6 @@
                                         <th>GAJI</th>
                                         <th>MARGIN</th>
                                         <!-- <th>ID</th> -->
-                                        <th>TARIF</th>
                                         <th>OPSI</th>
                                     </tr>
                                 </thead>
@@ -293,6 +292,8 @@
                 $('#produk_idm').val(data.produk);
                 $('#shipment').val(data.shipment);
                 $('#qty').val(data.qty);
+                $('#nominal').val(data.tarif);
+                $('#nominall').val(data.tarif);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Error!');
@@ -323,8 +324,8 @@
                 $('#tgl_inv').val(data.tgl_inv);
                 $('#no_inv').val(data.no_inv);
                 $('#billing').val(data.billing);
-                $('#nominal').val(data.nominal);
-                $('#nominall').val(data.nominal);
+                $('#nominal').val(data.tarif);
+                $('#nominall').val(data.tarif);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Error!');
