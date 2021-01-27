@@ -76,6 +76,7 @@
                                         <th>GAJI</th>
                                         <th>MARGIN</th>
                                         <!-- <th>ID</th> -->
+                                        <th>TARIF</th>
                                         <th>OPSI</th>
                                     </tr>
                                 </thead>
