@@ -128,7 +128,7 @@ use CodeIgniter\I18n\Time;
                         <?php foreach ($invoice as $r) : ?>
                             <tr>
                                 <td style="border: 1px solid black"><?= $i++ ?></td>
-                                <td style="border: 1px solid black"><?= $r['tgl'] ?></td>
+                                <td style="border: 1px solid black"><?= Time::parse($r['tgl'])->toLocalizedString('dd-MMM-yy') ?></td>
                                 <td style="border: 1px solid black"><?= $r['nopol'] ?></td>
                                 <td style="border: 1px solid black"><?= $r['jenis'] ?></td>
                                 <td style="border: 1px solid black"><?= $r['dari'] . ' - ' . $r['tujuan'] ?></td>
