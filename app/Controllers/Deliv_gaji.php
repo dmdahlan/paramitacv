@@ -51,7 +51,7 @@ class Deliv_gaji extends BaseController
             } else {
                 $row[] =
                     '<a class="btn btn-warning btn-xs" href="javascript:void(0)" title="Edit" onclick="edit_gaji(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
-                    <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="Edit" onclick="hapus_gaji(' . "'" . $r->idm_gaji . "'" . ')">hapus</a>
+                    <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="hapus" onclick="hapus_gaji(' . "'" . $r->idm_gaji . "'" . ')">hapus</a>
                     ';
             }
             $total_gaji += $r->gaji;

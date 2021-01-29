@@ -6,15 +6,16 @@ class Print_invoice extends BaseController
 {
     public function index()
     {
-        if (empty($this->request->getPost('keyword'))) {
+
+        if (empty($this->request->getVar('keyword'))) {
             $keyword = $this->printinv->max();
         } else {
-            $keyword = $this->request->getPost('keyword');
+            $keyword = $this->request->getVar('keyword');
         }
-        if (empty($this->request->getPost('keyword'))) {
+        if (empty($this->request->getVar('keyword'))) {
             $cari = '';
         } else {
-            $cari = $this->request->getPost('keyword');
+            $cari = $this->request->getVar('keyword');
         }
         $data = [
             'title'         => 'Print Invoice',

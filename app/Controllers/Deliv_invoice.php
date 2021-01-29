@@ -63,7 +63,8 @@ class Deliv_invoice extends BaseController
             } else {
                 $row[] =
                     '<a class="btn btn-warning btn-xs" href="javascript:void(0)" title="Edit" onclick="edit_inv(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
-                    <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="Edit" onclick="hapus_inv(' . "'" . $r->idm_inv . "'" . ')">hapus</a>
+                    <a class="btn btn-success btn-xs" href="deliv_invoice/cetak/' . "$r->no_inv " . '">Cetak</a>
+                    <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="Hapus" onclick="hapus_inv(' . "'" . $r->idm_inv . "'" . ')">hapus</a>
                     ';
             }
             $total += $nominal;
@@ -83,6 +84,15 @@ class Deliv_invoice extends BaseController
         );
         //output to json format
         echo json_encode($output);
+    }
+    public function cetak($no_inv)
+    {
+        $data = [
+            'title'         => 'Print Invoice',
+            'invoice'       => $this->printinv->inv($no_inv),
+            'ket'           => $this->printinv->ket($no_inv)
+        ];
+        return view('data/vw_printinv', $data);
     }
     public function simpan_invoice()
     {
