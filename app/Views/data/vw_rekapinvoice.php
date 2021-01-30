@@ -62,6 +62,7 @@
                                         <th>NOMINAL</th>
                                         <th>PPN</th>
                                         <th>PPH23</th>
+                                        <th>CLAIM</th>
                                         <th>TOTAL</th>
                                         <th>BANK</th>
                                         <th>TGL BYR</th>
@@ -70,7 +71,7 @@
                                         <th>NOMINAL</th> -->
                                         <th>SISA</th>
                                         <th>KETERANGAN</th>
-                                        <!-- <th>Opsi</th> -->
+                                        <th>Opsi</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -146,7 +147,7 @@
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-label">BANK</label>
                                     <select id="bank1" name="bank1" class="form-control">
@@ -154,6 +155,14 @@
                                         <option value="danamon">Danamon</option>
                                         <option value="bca">BCA</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">CLAIM</label>
+                                    <input id="nominal_claimm" name="nominal_claimm" class=" form-control uang" placeholder="Claim" type="text">
+                                    <span class="help-block text-danger"></span>
+                                    <input type="hidden" id="nominal_claim" name="nominal_claim">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -220,7 +229,7 @@
                 },
             },
             "columnDefs": [{
-                "targets": [5, 6, 7, 8, 11, 13],
+                "targets": [5, 6, 7, 8, 9, 11, 13],
                 "className": 'text-right'
             }]
         });
@@ -316,8 +325,10 @@
                 $('#no_inv').val(data.no_inv);
                 $('#no_faktur').val(data.no_faktur);
                 $('#produk_idm').val(data.produk_idm).change();
-                $('#nominall').val(data.nominal);
                 $('#nominal').val(data.nominal);
+                $('#nominall').val(data.nominal);
+                $('#nominal_claim').val(data.nominal_claim);
+                $('#nominal_claimm').val(data.nominal_claim);
                 $('#ket_rekap').val(data.ket_rekap);
                 $('#bank1').val(data.bank1);
                 $('#tgl_bayar1').val(data.tgl_bayar1);
@@ -334,7 +345,7 @@
         });
     }
 
-    function hapus_rekapinv(id) {
+    function hapus_rekap(id) {
         swal.fire({
             title: 'Apakah Anda Yakin ?',
             text: 'Anda Tidak Akan Bisa Merecover Kembali Data Yang Sudah Anda Hapus !',
@@ -348,7 +359,7 @@
         }).then((willDelete) => {
             if (willDelete.value) {
                 $.ajax({
-                    url: "<?php echo site_url('rekapinv_order/delete') ?>/" + id,
+                    url: "<?php echo site_url('rekap_invoice/delete') ?>/" + id,
                     type: "POST",
                     dataType: "JSON",
                     success: function(data) {
@@ -411,6 +422,11 @@
     var niminal = document.querySelector('input[name="nominal"]');
     nominall.onkeyup = function() {
         nominal.value = this.value.replace(/\./g, '');
+    }
+    var nominal_claimm = document.querySelector('input[name="nominal_claimm"]');
+    var niminal_claim = document.querySelector('input[name="nominal_claim"]');
+    nominal_claimm.onkeyup = function() {
+        nominal_claim.value = this.value.replace(/\./g, '');
     }
     var nominall1 = document.querySelector('input[name="nominall1"]');
     var niminal1 = document.querySelector('input[name="nominal1"]');

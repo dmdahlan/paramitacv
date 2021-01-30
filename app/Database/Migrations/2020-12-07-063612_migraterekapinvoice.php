@@ -38,6 +38,11 @@ class Migraterekapinvoice extends Migration
 				'type'           => 'INT',
 				'constraint'     => 11,
 			],
+			'nominal_claim'	     => [
+				'type'           => 'INT',
+				'constraint'     => 11,
+				'null'			 => true,
+			],
 			'ket_rekap'	     => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 30,

@@ -40,6 +40,8 @@ $routes->get('/admin_role', 'Admin_role::tambah');
 $routes->get('/admin_menu', 'Admin_menu::index');
 $routes->get('/admin_user', 'Admin_user::index');
 
+$routes->get('/deliv_invoice(:segment)', 'Deliv_invoice::cetak$1');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

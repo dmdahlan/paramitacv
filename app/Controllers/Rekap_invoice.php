@@ -32,6 +32,7 @@ class Rekap_invoice extends BaseController
         $grandtotal = 0;
         $bayar1 = 0;
         $bayar2 = 0;
+        $claim = 0;
         $piutang = 0;
         $total_ppn = 0;
         $total_pph = 0;
@@ -59,15 +60,17 @@ class Rekap_invoice extends BaseController
             } else {
                 $row[] = null;
             }
+            //clain
+            $row[] = $this->rupiah($r->nominal_claim);
             // total
             if ($r->ppn +  $r->pph == 0) {
-                $row[] = $this->rupiah($r->nominal);
+                $row[] = $this->rupiah($r->nominal - $r->nominal_claim);
             }
             if ($r->ppn +  $r->pph == 1) {
-                $row[] = $this->rupiah($r->nominal + $ppn);
+                $row[] = $this->rupiah($r->nominal + $ppn - $r->nominal_claim);
             }
             if ($r->ppn +  $r->pph == 2) {
-                $row[] = $this->rupiah($r->nominal + $ppn - $pph);
+                $row[] = $this->rupiah($r->nominal + $ppn - $pph - $r->nominal_claim);
             }
             $row[] = $r->bank1;
             if ($r->tgl_bayar1 == null) {
@@ -84,19 +87,15 @@ class Rekap_invoice extends BaseController
             // $row[] = $this->rupiah($r->nominal2);
             // sisa
             if ($r->ppn +  $r->pph == 0) {
-                $row[] = $this->rupiah($r->nominal - $r->nominal1 - $r->nominal2);
+                $row[] = $this->rupiah($r->nominal - $r->nominal_claim - $r->nominal1 - $r->nominal2);
             }
             if ($r->ppn +  $r->pph == 1) {
-                $row[] = $this->rupiah($r->nominal + $ppn - $r->nominal1 - $r->nominal2);
+                $row[] = $this->rupiah($r->nominal - $r->nominal_claim + $ppn - $r->nominal1 - $r->nominal2);
             }
             if ($r->ppn +  $r->pph == 2) {
-                $row[] = $this->rupiah($r->nominal + $ppn - $pph - $r->nominal1 - $r->nominal2);
+                $row[] = $this->rupiah($r->nominal - $r->nominal_claim + $ppn - $pph - $r->nominal1 - $r->nominal2);
             }
             $row[] = $r->ket_rekap;
-            // $row[] = '
-            //          <a class="btn btn-warning btn-xs" href="javascript:void(0)" title="Edit" onclick="edit_rekap(' . "'" . $r->id_rekap . "'" . ')">Edit</a>
-            //          <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="Hapus" onclick="hapus_rekap(' . "'" . $r->id_rekap . "'" . ')">Hapus</a>
-            //         ';
             $invaja = 0;
             if ($r->ppn +  $r->pph == 0) {
                 $invaja = $r->nominal;
@@ -110,14 +109,18 @@ class Rekap_invoice extends BaseController
             // sisa pembayaran
             $sisabayar = 0;
             if ($r->ppn +  $r->pph == 0) {
-                $sisabayar = $r->nominal - $r->nominal1 - $r->nominal2;
+                $sisabayar = $r->nominal - $r->nominal_claim - $r->nominal1 - $r->nominal2;
             }
             if ($r->ppn +  $r->pph == 1) {
-                $sisabayar = $r->nominal + $ppn - $r->nominal1 - $r->nominal2;
+                $sisabayar = $r->nominal - $r->nominal_claim + $ppn - $r->nominal1 - $r->nominal2;
             }
             if ($r->ppn +  $r->pph == 2) {
-                $sisabayar = $r->nominal + $ppn - $pph - $r->nominal1 - $r->nominal2;
+                $sisabayar = $r->nominal - $r->nominal_claim + $ppn - $pph - $r->nominal1 - $r->nominal2;
             }
+            $row[] = '
+                     <a class="btn btn-warning btn-xs" href="javascript:void(0)" title="Edit" onclick="edit_rekap(' . "'" . $r->id_rekap . "'" . ')">Edit</a>
+                     <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="Hapus" onclick="hapus_rekap(' . "'" . $r->id_rekap . "'" . ')">Hapus</a>
+                    ';
             // totl ppn
             // ppn
             $ttlppn = 0;
@@ -140,10 +143,11 @@ class Rekap_invoice extends BaseController
             $piutang += $sisabayar;
             $total_ppn += $ttlppn;
             $total_pph += $ttlpph;
+            $claim += $r->nominal_claim;
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($total_ppn), $this->rupiah($total_pph), $this->rupiah($grandtotal), '', '', $this->rupiah($bayar1), $this->rupiah($piutang), ''
+            '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($total_ppn), $this->rupiah($total_pph), $this->rupiah($claim), $this->rupiah($grandtotal), '', '', $this->rupiah($bayar1), $this->rupiah($piutang), '', ''
         );
         $output = array(
             "draw" => @$_POST['draw'],
@@ -174,6 +178,7 @@ class Rekap_invoice extends BaseController
             'no_faktur'             => $this->request->getPost('no_faktur'),
             'produk_idm'            => $this->request->getPost('produk_idm'),
             'nominal'               => $this->request->getPost('nominal'),
+            'nominal_claim'         => $this->request->getPost('nominal_claim'),
             'ket_rekap'             => $this->request->getPost('ket_rekap'),
             'bank1'                 => $this->request->getPost('bank1'),
             'tgl_bayar1'            => $tgl_bayar1,
@@ -212,6 +217,7 @@ class Rekap_invoice extends BaseController
             'no_faktur'             => $this->request->getPost('no_faktur'),
             'produk_idm'            => $this->request->getPost('produk_idm'),
             'nominal'               => $this->request->getPost('nominal'),
+            'nominal_claim'         => $this->request->getPost('nominal_claim'),
             'ket_rekap'             => $this->request->getPost('ket_rekap'),
             'bank1'                 => $this->request->getPost('bank1'),
             'tgl_bayar1'            => $tgl_bayar1,
@@ -220,6 +226,14 @@ class Rekap_invoice extends BaseController
             // 'nominal2'              => $this->request->getPost('nominal2'),
         ];
         if ($this->rekapinvoice->save($data)) {
+            echo json_encode(['status' => TRUE]);
+        } else {
+            echo json_encode(['status' => FALSE]);
+        }
+    }
+    public function delete($id)
+    {
+        if ($this->rekapinvoice->delete($id)) {
             echo json_encode(['status' => TRUE]);
         } else {
             echo json_encode(['status' => FALSE]);
