@@ -64,33 +64,33 @@ use CodeIgniter\I18n\Time;
             <div class="row invoice-info">
                 <div class="col-sm-1 invoice-col">
                     <address>
-                        <strong> <u>INVOICE</u> </strong>
+                        <strong style=" font-size:20px"> <u>INVOICE</u> </strong>
                     </address>
                 </div>
             </div>
             <div class="row invoice-info">
                 <div class="col-sm-1 invoice-col">
-                    <address>
+                    <address style=" font-size:20px">
                         INVOICE<br>
                         TANGGAL
                     </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-1 invoice-col">
-                    <address>
+                    <address style=" font-size:20px">
                         :<br>
                         :
                     </address>
                 </div>
 
                 <div class="col-sm-5 invoice-col">
-                    <address>
+                    <address style=" font-size:20px">
                         <?= $ket['no_inv'] ?><br>
                         <?= Time::parse($ket['tgl_inv'])->toLocalizedString('dd MMMM yyyy') ?>
                     </address>
                 </div>
                 <div class="col-sm-4 invoice-col">
-                    <address class="float-right">
+                    <address class="float-right" style=" font-size:20px">
                         <strong>INVOICE TO :</strong><br>
                         <?= $ket['customer'] ?> <br>
                         <?= $ket['alamat'] ?>
@@ -106,14 +106,14 @@ use CodeIgniter\I18n\Time;
                     <table class="table" width="100%" style="border: 1px solid black">
                         <thead>
                             <tr>
-                                <th style="border: 1px solid black">NO</th>
-                                <th style="border: 1px solid black">TANGGAL</th>
-                                <th style="border: 1px solid black">NO POLISI</th>
-                                <th style="border: 1px solid black">TYPE</th>
-                                <th style="border: 1px solid black">AREA</th>
-                                <th style="border: 1px solid black">NO SHIPMENT</th>
-                                <th style="border: 1px solid black">QTY</th>
-                                <th style="border: 1px solid black">TARIF</th>
+                                <th style="border: 1px solid black; font-size:20px">NO</th>
+                                <th style="border: 1px solid black; font-size:20px">TANGGAL</th>
+                                <th style="border: 1px solid black; font-size:20px">NO POLISI</th>
+                                <th style="border: 1px solid black; font-size:20px">TYPE</th>
+                                <th style="border: 1px solid black; font-size:20px">AREA</th>
+                                <th style="border: 1px solid black; font-size:20px">NO SHIPMENT</th>
+                                <th style="border: 1px solid black; font-size:20px">QTY</th>
+                                <th style="border: 1px solid black; font-size:20px">TARIF</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -128,14 +128,14 @@ use CodeIgniter\I18n\Time;
                             ?>
                             <?php foreach ($invoice as $r) : ?>
                                 <tr>
-                                    <td style="border: 1px solid black"><?= $i++ ?></td>
-                                    <td style="border: 1px solid black"><?= Time::parse($r['tgl'])->toLocalizedString('dd-MMM-yy') ?></td>
-                                    <td style="border: 1px solid black"><?= $r['nopol'] ?></td>
-                                    <td style="border: 1px solid black"><?= $r['jenis'] ?></td>
-                                    <td style="border: 1px solid black"><?= $r['dari'] . ' - ' . $r['tujuan'] ?></td>
-                                    <td style="border: 1px solid black"><?= $r['shipment'] ?></td>
-                                    <td style="border: 1px solid black"><?= number_format($r['qty'], 0, ',', '.') ?></td>
-                                    <td style="border: 1px solid black" class="text-right"><?= number_format($r['nominal'], 0, ',', '.') ?></td>
+                                    <td style="border: 1px solid black; font-size:20px"><?= $i++ ?></td>
+                                    <td style="border: 1px solid black; font-size:20px"><?= Time::parse($r['tgl'])->toLocalizedString('dd-MMM-yy') ?></td>
+                                    <td style="border: 1px solid black; font-size:20px"><?= $r['nopol'] ?></td>
+                                    <td style="border: 1px solid black; font-size:20px"><?= $r['jenis'] ?></td>
+                                    <td style="border: 1px solid black; font-size:20px"><?= $r['dari'] . ' - ' . $r['tujuan'] ?></td>
+                                    <td style="border: 1px solid black; font-size:20px"><?= $r['shipment'] ?></td>
+                                    <td style="border: 1px solid black; font-size:20px"><?= number_format($r['qty'], 0, ',', '.') ?></td>
+                                    <td style="border: 1px solid black; font-size:20px" class="text-right"><?= number_format($r['nominal'], 0, ',', '.') ?></td>
                                     <?php $total_inv += $r['nominal'] ?>
                                 </tr>
                             <?php endforeach ?>
@@ -182,28 +182,28 @@ use CodeIgniter\I18n\Time;
                                 <td></td>
                             </tr>
                             <tr>
-                                <th style="width:30%">Total</th>
-                                <td>:</td>
-                                <td class="text-right"><?= number_format($total_inv, 0, ',', '.') ?></td>
-                                <td></td>
+                                <th style="width:30%; font-size:20px">Total</th>
+                                <td style=" font-size:20px">:</td>
+                                <td class="text-right" style=" font-size:20px"><?= number_format($total_inv, 0, ',', '.') ?></td>
+                                <td style=" font-size:20px"></td>
                             </tr>
                             <tr>
-                                <th>PPN 10%</th>
-                                <td>:</td>
-                                <td class="text-right"><?= number_format($ppn, 0, ',', '.') ?></td>
-                                <td></td>
+                                <th style=" font-size:20px">PPN 10%</th>
+                                <td style=" font-size:20px">:</td>
+                                <td class="text-right" style=" font-size:20px"><?= number_format($ppn, 0, ',', '.') ?></td>
+                                <td style=" font-size:20px"></td>
                             </tr>
                             <tr>
-                                <th>PPH 2%</th>
-                                <td>:</td>
-                                <td class="text-right"><?= number_format($pph, 0, ',', '.') ?></td>
-                                <td></td>
+                                <th style=" font-size:20px">PPH 2%</th>
+                                <td style=" font-size:20px">:</td>
+                                <td class="text-right" style=" font-size:20px"><?= number_format($pph, 0, ',', '.') ?></td>
+                                <td style=" font-size:20px"></td>
                             </tr>
                             <tr>
-                                <th>Grand Total:</th>
-                                <td>:</td>
-                                <td class="text-right"><?= number_format($grand_total, 0, ',', '.') ?></td>
-                                <td></td>
+                                <th style=" font-size:20px">Grand Total:</th>
+                                <td style=" font-size:20px">:</td>
+                                <td class="text-right" style=" font-size:20px"><?= number_format($grand_total, 0, ',', '.') ?></td>
+                                <td style=" font-size:20px"></td>
                             </tr>
                         </table>
                     </div>
@@ -213,7 +213,7 @@ use CodeIgniter\I18n\Time;
                 </div>
                 <div class="col-4">
                     <p><strong>Balikpapan, <?= Time::parse($ket['tgl_inv'])->toLocalizedString('dd MMMM yyyy') ?></strong></p><br><br><br><br>
-                    <p class="mt-5"><strong>Pranawingrum</strong></p>
+                    <p class="mt-5" style=" font-size:20px"><strong>Pranawingrum</strong></p>
                 </div>
             </div>
             <!-- /.row -->
