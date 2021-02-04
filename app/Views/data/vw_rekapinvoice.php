@@ -218,6 +218,10 @@
             order: [], //Initial no order.
             autowidth: true,
             ordering: true,
+            "lengthMenu": [
+                [10, 100, 500, 1500],
+                [10, 100, 500, 1500]
+            ],
             // Load data for the table's content from an Ajax source
             ajax: {
                 "url": "<?php echo site_url('rekap_invoice/ajax_list') ?>",

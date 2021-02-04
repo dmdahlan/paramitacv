@@ -27,6 +27,7 @@ class Migratebiaya extends Migration
 			'updated_at' 	    => ['type' => 'DATETIME', 'null' => true],
 		]);
 		$this->forge->addKey('id_biaya', true);
+		$this->forge->addUniqueKey('deliv_idm');
 		$this->forge->createTable('deliv_biaya');
 	}
 

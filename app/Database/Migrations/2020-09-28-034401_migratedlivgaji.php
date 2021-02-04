@@ -38,6 +38,7 @@ class Migratedlivgaji extends Migration
 			]
 		]);
 		$this->forge->addKey('idm_gaji', true);
+		$this->forge->addUniqueKey('deliv_idm');
 		$this->forge->createTable('deliv_gaji');
 	}
 

@@ -68,6 +68,7 @@ class Migratedelivinvoice extends Migration
 			]
 		]);
 		$this->forge->addKey('idm_inv', true);
+		$this->forge->addUniqueKey('deliv_idm');
 		$this->forge->createTable('deliv_invoice');
 	}
 

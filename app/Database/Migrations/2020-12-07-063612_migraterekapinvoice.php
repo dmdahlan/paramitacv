@@ -41,7 +41,6 @@ class Migraterekapinvoice extends Migration
 			'nominal_claim'	     => [
 				'type'           => 'INT',
 				'constraint'     => 11,
-				'null'			 => true,
 			],
 			'ket_rekap'	     => [
 				'type'           => 'VARCHAR',
@@ -60,7 +59,6 @@ class Migraterekapinvoice extends Migration
 			'nominal1'	     => [
 				'type'           => 'INT',
 				'constraint'     => 11,
-				'null'			 => true,
 			],
 			'bank2'	     => [
 				'type'           => 'VARCHAR',
@@ -74,7 +72,6 @@ class Migraterekapinvoice extends Migration
 			'nominal2'	     => [
 				'type'           => 'INT',
 				'constraint'     => 11,
-				'null'			 => true,
 			],
 			'coun'          => [
 				'type'           => 'INT',
