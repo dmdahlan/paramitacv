@@ -27,7 +27,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <a href="" class="btn btn-info btn-sm" data-toggle="modal" onclick="tambah_form()">Tambah</a>
                                 </div>
                                 <div class="col-md-2">
@@ -41,6 +41,9 @@
                                         <option value="">Status Tertagih</option>
                                         <option value="Belum Bayar">Belum Bayar</option>
                                     </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="tglbayar" placeholder="tgl bayar" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
                                 </div>
                                 <div class="col-md-2">
                                     <button type="button" id="btn-filter" class="btn btn-info btn-sm">Cari</button>
@@ -230,6 +233,7 @@
                     data.tgl_awal = $('#tglawal').val();
                     data.tgl_akhir = $('#tglakhir').val();
                     data.payment = $('#payment').val();
+                    data.tgl_bayar = $('#tglbayar').val();
                 },
             },
             "columnDefs": [{
@@ -240,6 +244,9 @@
         init_select();
     });
     $('#payment').change(function() {
+        table.ajax.reload();
+    });
+    $('#tglbayar').change(function() {
         table.ajax.reload();
     });
     $('#btn-filter').click(function() { //button filter event click
@@ -258,6 +265,7 @@
         document.getElementById("tglawal").value = "";
         document.getElementById("tglakhir").value = "";
         document.getElementById("payment").value = "";
+        document.getElementById("tglbayar").value = "";
         reload_table();
     }
 

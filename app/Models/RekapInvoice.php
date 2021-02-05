@@ -34,6 +34,9 @@ class RekapInvoice extends Model
         if ($request->getVar('tgl_awal') && $request->getVar('tgl_akhir')) {
             $this->dt->where('tgl_rekap BETWEEN "' . date('Y-m-d', strtotime($request->getVar('tgl_awal'))) . '" AND "' . date('Y-m-d', strtotime($request->getVar('tgl_akhir'))) . '"');
         }
+        if ($request->getPost('tgl_bayar')) {
+            $this->dt->like('tgl_bayar1',  date('Y-m-d', strtotime($request->getPost('tgl_bayar'))));
+        }
         if ($request->getVar('payment') == 'Belum Bayar') {
             $this->dt->where('tgl_bayar1', null);
         }
