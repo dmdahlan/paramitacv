@@ -182,7 +182,7 @@ use CodeIgniter\I18n\Time;
                                 <td></td>
                             </tr>
                             <tr>
-                                <th style="width:30%; font-size:20px">Total</th>
+                                <th style="width:40%; font-size:20px">Total</th>
                                 <td style=" font-size:20px">:</td>
                                 <td class="text-right" style=" font-size:20px"><?= number_format($total_inv, 0, ',', '.') ?></td>
                                 <td style=" font-size:20px"></td>
