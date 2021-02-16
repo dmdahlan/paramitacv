@@ -27,9 +27,6 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-md-5">
-
-                                </div>
                                 <div class="col-md-2">
                                     <input id="tgl_awal" placeholder="tgl awal" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
                                 </div>
@@ -42,13 +39,62 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div id="tabel-div" hidden class="card-body table table-responsive table-sm" style="font-size: 14px;">
+                        <div id="tabel-div" class="card-body table table-responsive table-sm" style="font-size: 14px;">
                             <table id="tabel" class="table table-bordered table-hover table-striped js-basic-example dataTable nowrap cell-border" cellspacing="0" width="100%" role="grid">
                                 <thead>
                                     <tr>
-                                        <th>NO</th>
-                                        <th>NAMA PRODUK</th>
-                                        <th>PIUTANG</th>
+                                        <th rowspan="2">NO</th>
+                                        <th rowspan="2">NAMA CUSTOMER</th>
+                                        <th colspan="3">Jan</th>
+                                        <th colspan="3">Feb</th>
+                                        <th colspan="3">Mar</th>
+                                        <th colspan="3">Apr</th>
+                                        <th colspan="3">Mei</th>
+                                        <th colspan="3">Jun</th>
+                                        <th colspan="3">Jul</th>
+                                        <th colspan="3">Agt</th>
+                                        <th colspan="3">Sep</th>
+                                        <th colspan="3">Okt</th>
+                                        <th colspan="3">Nov</th>
+                                        <th colspan="3">Des</th>
+                                    <tr>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                        <th>Invoice</th>
+                                        <th>Bayar</th>
+                                        <th>Saldo Hutang</th>
+                                    </tr>
                                     </tr>
                                 </thead>
                             </table>

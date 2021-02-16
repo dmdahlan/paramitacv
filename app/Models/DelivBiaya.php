@@ -41,7 +41,7 @@ class DelivBiaya extends Model
             $this->dt->like('nopol', $request->getVar('nopol'));
         }
         if ($request->getPost('tgl_deliv')) {
-            $this->dt->where('tgl', $request->getPost('tgl_deliv'));
+            $this->dt->like('tgl',  date('Y-m', strtotime($request->getPost('tgl_deliv'))));
         }
         $i = 0;
         foreach ($this->column_search as $item) {

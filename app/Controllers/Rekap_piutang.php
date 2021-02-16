@@ -6,10 +6,17 @@ class Rekap_piutang extends BaseController
 {
     public function index()
     {
+        $tgl_awalinv  = '2021-01-01';
+        $tgl_akhirinv = '2021-12-31';
+        $tgl_awalbyr  = '2020-01-01';
+        $tgl_akhirbyr = '2021-12-31';
         $data = [
-            'title'         => 'Rekap | Piutang'
+            'title'         => 'Rekap | Piutang',
+            'invoice'       => $this->rekappiutang->rekaphutang($tgl_awalinv, $tgl_akhirinv)->getResultArray(),
+            'bayar'         => $this->rekappiutang->rekapbayar($tgl_awalbyr, $tgl_akhirbyr)->getResultArray(),
         ];
-        return view('data/vw_rekappiutang', $data);
+        return view('data/vw_rekapan', $data);
+        // return view('data/vw_rekappiutang', $data);
     }
     public function list()
     {
@@ -22,8 +29,8 @@ class Rekap_piutang extends BaseController
 
         $data = array();
         $no = @$_POST['start'];
-        $temp_hutang = 0;
 
+        $temp_hutang = 0;
         $temp_bln_total = 0;
 
         foreach ($report as $r) {
@@ -31,25 +38,22 @@ class Rekap_piutang extends BaseController
             $row = array();
             $row[] = $no;
             $row[] = $r->customer;
-            $row[] = $this->rupiah($r->piutang);
+            $row[] = $this->rupiah($r->jan);
+            $row[] = $this->rupiah($r->feb);
+            $row[] = $this->rupiah($r->mar);
+            $row[] = $this->rupiah($r->apr);
+            $row[] = $this->rupiah($r->mei);
+            $row[] = $this->rupiah($r->jun);
+            $row[] = $this->rupiah($r->jul);
+            $row[] = $this->rupiah($r->agt);
+            $row[] = $this->rupiah($r->sep);
+            $row[] = $this->rupiah($r->okt);
+            $row[] = $this->rupiah($r->nop);
+            $row[] = $this->rupiah($r->dess);
 
-
-            $total_bulan = $r->piutang;
-
-            $row[] = $this->rupiah($total_bulan);
-
-            $temp_hutang      += $r->piutang;
-
-            $temp_bln_total  += $total_bulan;
             //add html for action
             $data[] = $row;
         }
-        $data[] = array(
-            '',
-            'Total Piutang',
-            $this->rupiah($temp_hutang),
-            $this->rupiah($temp_bln_total),
-        );
 
         $output = array(
             "draw" => @$_POST['draw'],

@@ -28,7 +28,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <input id="tgldeliv" placeholder="Delivery" class="form-control tanggall form-control-sm" type="text" autocomplete="off">
+                                    <input id="tgldeliv" placeholder="Delivery" class="form-control tgl form-control-sm" type="text" autocomplete="off">
                                 </div>
                                 <div class="col-md-2">
                                     <input id="nopoll" placeholder="Nopol" class="form-control form-control-sm" type="text" autocomplete="off">
@@ -343,6 +343,10 @@
             "order": [], //Initial no order.
             "autowidth": true,
             "ordering": true,
+            "lengthMenu": [
+                [10, 100, 500, 1500],
+                [10, 100, 500, 1500]
+            ],
             // Load data for the table's content from an Ajax source
             ajax: {
                 "url": "<?php echo site_url('deliv_biaya/ajax_list'); ?>",
@@ -555,10 +559,12 @@
         format: "dd-mm-yyyy"
     });
 
-    $('.tanggall').datepicker({
-        autoclose: true,
-        todayHighlight: true,
-        format: "yyyy-mm-dd"
+    $('.tgl').datepicker({
+        startView: "months",
+        minViewMode: "months",
+        format: 'MM yyyy'
+    }).on('change', function() {
+        $('.datepicker').hide();
     });
 </script>
 <?= $this->endSection('content'); ?>
