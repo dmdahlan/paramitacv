@@ -38,19 +38,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div id="tabel-div" class="card-body" style="font-size: 14px">
-                            <table id="tabel" class="table table-sm table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>NO</th>
-                                        <th>NAMA CUSTOMER</th>
-                                        <th>JAN</th>
-                                        <th>FEB</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
                         <div id="tabel-div" class="card-body" style="font-size: 14px">
                             <table id="tabel" class="table table-sm table-bordered table-hover">
                                 <thead>
@@ -70,12 +57,12 @@
                                         return $hasil_rupiah;
                                     }
                                     ?>
-                                    <?php foreach ($invoice as $inv) foreach ($bayar as $byr) : ?>
+                                    <?php foreach ($invoice as $inv) : ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td><?= $inv['customer'] ?></td>
                                             <td><?= rupiah($inv['jan']) ?></td>
-                                            <td><?= $byr['byr_jan'] ?></td>
+                                            <td><?= $inv['byr_jan'] ?></td>
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>

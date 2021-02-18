@@ -58,6 +58,11 @@ class Migratedelivorder extends Migration
 				'constraint'     => 11,
 				'null'			 => true,
 			],
+			'tujuaninv_idm'	     => [
+				'type'           => 'INT',
+				'constraint'     => 11,
+				'null'			 => true,
+			],
 			'outlet'	     => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 128,

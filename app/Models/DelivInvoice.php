@@ -32,9 +32,9 @@ class DelivInvoice extends Model
             ->join('deliv_biaya', 'deliv_biaya.deliv_idm = deliv_order.idm_deliv', 'left')
             ->join('master_unit', 'master_unit.idm_nopol = deliv_order.nopol_idm', 'left')
             ->join('master_dari', 'master_dari.idm_dari = deliv_order.dari_idm', 'left')
-            ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuan_idm', 'left')
+            ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuaninv_idm', 'left')
             ->join('master_produk', 'master_produk.idm_produk = deliv_order.produk_idm', 'left')
-            ->join('master_invoice', 'master_invoice.kode_inv=concat(deliv_order.dari_idm,deliv_order.tujuan_idm,deliv_order.orderan,deliv_order.produk_idm)', 'left')
+            ->join('master_invoice', 'master_invoice.kode_inv=concat(deliv_order.dari_idm,deliv_order.tujuaninv_idm,deliv_order.orderan,deliv_order.produk_idm)', 'left')
             ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari, master_tujuan.tujuan,master_produk.produk,deliv_invoice.idm_inv,deliv_invoice.tgl_inv,deliv_invoice.no_inv,deliv_invoice.billing,deliv_invoice.nominal,master_produk.customer,deliv_biaya.total as ttlbiaya,master_gaji.gaji,master_invoice.tarif');
         $this->dt->where('deliv_order.deleted_at', null);
 
@@ -98,9 +98,9 @@ class DelivInvoice extends Model
             ->join('deliv_invoice', 'deliv_invoice.deliv_idm = deliv_order.idm_deliv', 'left')
             ->join('master_unit', 'master_unit.idm_nopol = deliv_order.nopol_idm', 'left')
             ->join('master_dari', 'master_dari.idm_dari = deliv_order.dari_idm', 'left')
-            ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuan_idm', 'left')
+            ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuaninv_idm', 'left')
             ->join('master_produk', 'master_produk.idm_produk = deliv_order.produk_idm', 'left')
-            ->join('master_invoice', 'master_invoice.kode_inv=concat(deliv_order.dari_idm,deliv_order.tujuan_idm,deliv_order.orderan,deliv_order.produk_idm)', 'left')
+            ->join('master_invoice', 'master_invoice.kode_inv=concat(deliv_order.dari_idm,deliv_order.tujuaninv_idm,deliv_order.orderan,deliv_order.produk_idm)', 'left')
             ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari, master_tujuan.tujuan,master_produk.produk,deliv_invoice.idm_inv,deliv_invoice.tgl_inv,deliv_invoice.no_inv,deliv_invoice.billing,deliv_invoice.nominal,master_invoice.tarif');
         $this->di->where('deliv_order.deleted_at', null);
         return $this->di->getWhere(['idm_deliv' => $id])->getRowArray();

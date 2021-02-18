@@ -69,7 +69,8 @@
                                         <th>DRIVER</th>
                                         <th>AWAL</th>
                                         <th>DARI</th>
-                                        <th>TUJUAN</th>
+                                        <th>TUJUAN(GAJI)</th>
+                                        <th>TUJUAN(INVOICE)</th>
                                         <th>OUTLET</th>
                                         <th>PRODUK</th>
                                         <th>CUSTOMER</th>
@@ -167,8 +168,16 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label class="form-label">Tujuan</label>
+                                    <label class="form-label">Tujuan Gaji</label>
                                     <select id="tujuan_idm" name="tujuan_idm" class="form-control select2">
+                                    </select>
+                                    <span class="help-block text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="form-label">Tujuan Invoice</label>
+                                    <select id="tujuaninv_idm" name="tujuaninv_idm" class="form-control select2">
                                     </select>
                                     <span class="help-block text-danger"></span>
                                 </div>
@@ -248,8 +257,8 @@
             "order": [], //Initial no order.
             "autowidth": true,
             "ordering": true,
-            // "scrollY": 350,
-            // "scrollX": true,
+            "scrollY": 350,
+            "scrollX": true,
             // "fixedColumns": {
             //     "leftColumns": 3
             // },
@@ -391,6 +400,7 @@
                 $('#lokasi_awal').val(data.lokasi_awal).change();
                 $('#dari_idm').val(data.dari_idm).change();
                 $('#tujuan_idm').val(data.tujuan_idm).change();
+                $('#tujuaninv_idm').val(data.tujuaninv_idm).change();
                 $('#outlet').val(data.outlet);
                 $('#produk_idm').val(data.produk_idm).change();
                 $('#shipment').val(data.shipment);
@@ -506,6 +516,17 @@
         $.getJSON(url_tujuan, function(data) {
             $.each(data, function(key, entry) {
                 dropdown_tujuan.append($('<option></option>').attr('value', entry.idm_tujuan).text(entry.tujuan));
+            })
+        });
+        let dropdown_tujuaninv = $('#tujuaninv_idm');
+        dropdown_tujuaninv.empty();
+        dropdown_tujuaninv.append('<option value="">Pilih Tujuan</option>');
+        dropdown_tujuaninv.prop('selectedIndex', 0);
+        const url_tujuaninv = '<?= base_url('master_tujuan/gettujuan/') ?>';
+        // Populate dropdown with list
+        $.getJSON(url_tujuaninv, function(data) {
+            $.each(data, function(key, entry) {
+                dropdown_tujuaninv.append($('<option></option>').attr('value', entry.idm_tujuan).text(entry.tujuan));
             })
         });
         let dropdown_produk = $('#produk_idm');

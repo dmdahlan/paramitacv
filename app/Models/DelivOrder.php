@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class DelivOrder extends Model
 {
     protected $table = 'deliv_order';
-    protected $allowedFields = ['tgl', 'sj_kembali', 'no_sj', 'nopol_idm', 'orderan', 'driver_idm', 'lokasi_awal', 'dari_idm', 'tujuan_idm', 'outlet', 'produk_idm', 'shipment', 'qty', 'claim', 'ketjuan'];
+    protected $allowedFields = ['tgl', 'sj_kembali', 'no_sj', 'nopol_idm', 'orderan', 'driver_idm', 'lokasi_awal', 'dari_idm', 'tujuan_idm', 'tujuaninv_idm', 'outlet', 'produk_idm', 'shipment', 'qty', 'claim', 'ketjuan'];
     protected $id = 'idm_deliv';
     protected $primaryKey = 'idm_deliv';
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 
-    protected $column_order = array('idm_deliv', 'sj_kembali', 'no_sj', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'tujuan', 'outlet', 'produk', 'customer', 'shipment', 'qty', 'claim');
+    protected $column_order = array('idm_deliv', 'sj_kembali', 'no_sj', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'tujuan', 'tujuaninv', 'outlet', 'produk', 'customer', 'shipment', 'qty', 'claim');
     protected $column_search = array('idm_deliv', 'sj_kembali', 'no_sj', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'tujuan', 'outlet', 'produk', 'customer', 'shipment', 'qty', 'claim');
     protected $order = array('tgl,created_at' => 'desc');
 
@@ -37,9 +37,10 @@ class DelivOrder extends Model
             ->join('master_driver', 'master_driver.idm_driver = deliv_order.driver_idm', 'left')
             ->join('master_dari', 'master_dari.idm_dari = deliv_order.dari_idm', 'left')
             ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuan_idm', 'left')
+            ->join('master_tujuan as tujuan_inv', 'tujuan_inv.idm_tujuan = deliv_order.tujuaninv_idm', 'left')
             ->join('master_produk', 'master_produk.idm_produk = deliv_order.produk_idm', 'left')
             ->join('deliv_biaya', 'deliv_biaya.deliv_idm=deliv_order.idm_deliv', 'left')
-            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_driver.nama,master_dari.dari as dari, master_tujuan.tujuan as tujuan,master_produk.produk as produk,master_produk.customer,deliv_biaya.deliv_idm');
+            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_driver.nama,master_dari.dari as dari, master_tujuan.tujuan as tujuan,tujuan_inv.tujuan as tujuaninv,master_produk.produk as produk,master_produk.customer,deliv_biaya.deliv_idm');
         $this->dt->where('deliv_order.deleted_at', null);
 
         $request = \Config\Services::request();

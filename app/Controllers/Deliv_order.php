@@ -38,6 +38,7 @@ class Deliv_order extends BaseController
             $row[] = $r->lokasi_awal;
             $row[] = $r->dari;
             $row[] = $r->tujuan;
+            $row[] = $r->tujuaninv;
             $row[] = $r->outlet;
             $row[] = $r->produk;
             $row[] = $r->customer;
@@ -83,6 +84,7 @@ class Deliv_order extends BaseController
             'lokasi_awal'     => $this->request->getPost('lokasi_awal'),
             'dari_idm'        => $this->request->getPost('dari_idm'),
             'tujuan_idm'      => $this->request->getPost('tujuan_idm'),
+            'tujuaninv_idm'   => $this->request->getPost('tujuaninv_idm'),
             'outlet'          => $this->request->getPost('outlet'),
             'produk_idm'      => $this->request->getPost('produk_idm'),
             'uang_jln'        => $this->request->getPost('uang_jln'),
@@ -122,6 +124,7 @@ class Deliv_order extends BaseController
             'lokasi_awal'     => $this->request->getVar('lokasi_awal'),
             'dari_idm'        => $this->request->getVar('dari_idm'),
             'tujuan_idm'      => $this->request->getVar('tujuan_idm'),
+            'tujuaninv_idm'   => $this->request->getPost('tujuaninv_idm'),
             'outlet'          => $this->request->getVar('outlet'),
             'produk_idm'      => $this->request->getVar('produk_idm'),
             'uang_jln'        => $this->request->getVar('uang_jln'),
