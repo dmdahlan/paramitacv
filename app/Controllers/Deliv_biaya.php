@@ -30,6 +30,11 @@ class Deliv_biaya extends BaseController
             $row = array();
             $row[] = $no;
             $row[] = Time::parse($r->tgl_deliv)->toLocalizedString('dd-MMM-yy');
+            if ($r->sj_kembali == '') {
+                $row[] = '';
+            } else {
+                $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-yy');
+            }
             if ($r->total == '') {
                 $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="tambah_biaya(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
             } else {
@@ -93,7 +98,7 @@ class Deliv_biaya extends BaseController
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($jmlh_1), '', $this->rupiah($jmlh_2), '', $this->rupiah($buruh_m), '', $this->rupiah($buruh_b), '', $this->rupiah($lain2), '', $this->rupiah($total_biaya), ''
+            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($jmlh_1), '', $this->rupiah($jmlh_2), '', $this->rupiah($buruh_m), '', $this->rupiah($buruh_b), '', $this->rupiah($lain2), '', $this->rupiah($total_biaya), ''
         );
         $output = array(
             "draw" => @$_POST['draw'],

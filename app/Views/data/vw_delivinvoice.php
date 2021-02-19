@@ -62,6 +62,7 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>TANGGAL</th>
+                                        <th>SJ KEMBALI</th>
                                         <th>NO POLISI</th>
                                         <th>TYPE</th>
                                         <th>DARI - TUJUAN</th>
@@ -222,6 +223,12 @@
                 [10, 100, 500, 1500],
                 [10, 100, 500, 1500]
             ],
+            "createdRow": function(row, data, dataIndex) {
+                if (data[2] == '') {
+                    $(row).css("background-color", "crimson");
+                    $(row).css("font-color", "crimson");
+                }
+            },
             // Load data for the table's content from an Ajax source
             ajax: {
                 "url": "<?php echo site_url('deliv_invoice/ajax_list'); ?>",

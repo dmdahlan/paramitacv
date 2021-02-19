@@ -29,6 +29,11 @@ class Deliv_invoice extends BaseController
             $row = array();
             $row[] = $no;
             $row[] = Time::parse($r->tgl_deliv)->toLocalizedString('dd-MMM-yy');
+            if ($r->sj_kembali == '') {
+                $row[] = '';
+            } else {
+                $row[] = Time::parse($r->sj_kembali)->toLocalizedString('dd-MMM-yy');
+            }
             if ($r->tgl_inv == '') {
                 $row[] = '<a class="text-blue" href="javascript:void(0)" onclick="tambah_inv(' . "'" . $r->idm_deliv . "'" . ')">' . $r->nopol;
             } else {
@@ -74,7 +79,7 @@ class Deliv_invoice extends BaseController
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($totalbiaya),  $this->rupiah($totalgaji), $this->rupiah($margin), '', ''
+            '', '', 'TOTAL', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($totalbiaya),  $this->rupiah($totalgaji), $this->rupiah($margin), '', ''
         );
         $output = array(
             "draw" => @$_POST['draw'],

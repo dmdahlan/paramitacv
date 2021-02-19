@@ -45,6 +45,7 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>TANGGAL</th>
+                                        <th>SJ KEMBALI</th>
                                         <th>NO POLISI</th>
                                         <th>ORDERAN</th>
                                         <th>DRIVER</th>

@@ -12,8 +12,8 @@ class DelivBiaya extends Model
     protected $primaryKey = 'id_biaya';
     protected $useTimestamps = true;
 
-    protected $column_order = array('idm_deliv', 'tgl_deliv', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'produk', 'shipment', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total');
-    protected $column_search = array('idm_deliv', 'tgl', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'produk', 'shipment', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total', 'tujuan');
+    protected $column_order = array('idm_deliv', 'tgl_deliv', 'sj_kembali', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'produk', 'shipment', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total');
+    protected $column_search = array('idm_deliv', 'tgl', 'sj_kembali', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'produk', 'shipment', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total', 'tujuan');
     protected $order = array('tgl_deliv' => 'desc');
 
     function get_datatables()
