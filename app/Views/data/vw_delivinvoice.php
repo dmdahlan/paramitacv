@@ -224,7 +224,7 @@
                 [10, 100, 500, 1500]
             ],
             "createdRow": function(row, data, dataIndex) {
-                if (data[1] != '') {
+                if (data[2] == '') {
                     // $(row).css("background-color", "crimson");
                     $(row).css("color", "red");
                 }
