@@ -14,7 +14,7 @@ class DelivOrder extends Model
     protected $useSoftDeletes = true;
 
     protected $column_order = array('idm_deliv', 'sj_kembali', 'no_sj', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'tujuan', 'tujuaninv', 'outlet', 'produk', 'customer', 'shipment', 'qty', 'claim');
-    protected $column_search = array('idm_deliv', 'sj_kembali', 'no_sj', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'tujuan', 'outlet', 'produk', 'customer', 'shipment', 'qty', 'claim');
+    protected $column_search = array('idm_deliv', 'sj_kembali', 'no_sj', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'master_tujuan.tujuan', 'tujuan_inv.tujuan', 'outlet', 'produk', 'customer', 'shipment', 'qty', 'claim');
     protected $order = array('tgl,created_at' => 'desc');
 
     function __construct()
