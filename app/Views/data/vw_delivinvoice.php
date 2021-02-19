@@ -224,9 +224,9 @@
                 [10, 100, 500, 1500]
             ],
             "createdRow": function(row, data, dataIndex) {
-                if (data[2] == '') {
-                    $(row).css("background-color", "crimson");
-                    $(row).css("font-color", "crimson");
+                if (data[1] != '') {
+                    // $(row).css("background-color", "crimson");
+                    $(row).css("color", "red");
                 }
             },
             // Load data for the table's content from an Ajax source
