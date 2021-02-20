@@ -157,6 +157,7 @@
                                         <option value="">Pilih</option>
                                         <option value="danamon">Danamon</option>
                                         <option value="bca">BCA</option>
+                                        <option value="bri">BRI</option>
                                     </select>
                                 </div>
                             </div>
