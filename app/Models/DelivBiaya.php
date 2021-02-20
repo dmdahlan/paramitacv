@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class DelivBiaya extends Model
 {
     protected $table = 'deliv_biaya';
-    protected $allowedFields = ['deliv_idm', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total'];
+    protected $allowedFields = ['deliv_idm', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_inap', 'nominal_inap', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total'];
     protected $id = 'id_biaya';
     protected $primaryKey = 'id_biaya';
     protected $useTimestamps = true;
 
-    protected $column_order = array('idm_deliv', 'tgl_deliv', 'sj_kembali', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'produk', 'shipment', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total');
-    protected $column_search = array('idm_deliv', 'tgl', 'sj_kembali', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'produk', 'shipment', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total', 'tujuan');
+    protected $column_order = array('idm_deliv', 'tgl_deliv', 'sj_kembali', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'produk', 'shipment', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_inap', 'nominal_inap', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total');
+    protected $column_search = array('idm_deliv', 'tgl', 'sj_kembali', 'nopol', 'orderan', 'nama', 'lokasi_awal', 'dari', 'produk', 'shipment', 'tgl_1', 'jml_1', 'tgl_2', 'jml_2', 'tgl_buruhmuat', 'jml_buruhmuat', 'tgl_buruhbongkar', 'jml_buruhbongkar', 'tgl_inap', 'nominal_inap', 'tgl_lain2', 'jml_lain2', 'ket_biaya', 'total', 'tujuan');
     protected $order = array('tgl_deliv' => 'desc');
 
     function get_datatables()
@@ -33,7 +33,7 @@ class DelivBiaya extends Model
             ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuan_idm', 'left')
             ->join('master_produk', 'master_produk.idm_produk = deliv_order.produk_idm', 'left')
             ->join('master_driver', 'master_driver.idm_driver = deliv_order.driver_idm', 'left')
-            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari, master_tujuan.tujuan,master_produk.produk,master_driver.nama,deliv_biaya.tgl_1,deliv_biaya.jml_1,deliv_biaya.tgl_2,deliv_biaya.jml_2,deliv_biaya.tgl_buruhmuat,deliv_biaya.jml_buruhmuat,deliv_biaya.tgl_buruhbongkar,deliv_biaya.jml_buruhbongkar,deliv_biaya.tgl_lain2,deliv_biaya.jml_lain2,deliv_biaya.ket_biaya,deliv_biaya.total,deliv_biaya.id_biaya');
+            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari, master_tujuan.tujuan,master_produk.produk,master_driver.nama,deliv_biaya.tgl_1,deliv_biaya.jml_1,deliv_biaya.tgl_2,deliv_biaya.jml_2,deliv_biaya.tgl_buruhmuat,deliv_biaya.jml_buruhmuat,deliv_biaya.tgl_buruhbongkar,deliv_biaya.jml_buruhbongkar,deliv_biaya.tgl_inap,deliv_biaya.nominal_inap,deliv_biaya.tgl_lain2,deliv_biaya.jml_lain2,deliv_biaya.ket_biaya,deliv_biaya.total,deliv_biaya.id_biaya');
         $this->dt->where('deliv_order.deleted_at', null);
 
         $request = \Config\Services::request();
@@ -84,7 +84,7 @@ class DelivBiaya extends Model
             ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuan_idm', 'left')
             ->join('master_produk', 'master_produk.idm_produk = deliv_order.produk_idm', 'left')
             ->join('master_driver', 'master_driver.idm_driver = deliv_order.driver_idm', 'left')
-            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari, master_tujuan.tujuan,master_produk.produk,master_driver.nama,deliv_biaya.tgl_1,deliv_biaya.jml_1,deliv_biaya.tgl_2,deliv_biaya.jml_2,deliv_biaya.tgl_buruhmuat,deliv_biaya.jml_buruhmuat,deliv_biaya.tgl_buruhbongkar,deliv_biaya.jml_buruhbongkar,deliv_biaya.tgl_lain2,deliv_biaya.jml_lain2,deliv_biaya.ket_biaya,deliv_biaya.total,deliv_biaya.id_biaya');
+            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari, master_tujuan.tujuan,master_produk.produk,master_driver.nama,deliv_biaya.tgl_1,deliv_biaya.jml_1,deliv_biaya.tgl_2,deliv_biaya.jml_2,deliv_biaya.tgl_buruhmuat,deliv_biaya.jml_buruhmuat,deliv_biaya.tgl_buruhbongkar,deliv_biaya.jml_buruhbongkar,deliv_biaya.tgl_inap,deliv_biaya.nominal_inap,deliv_biaya.tgl_lain2,deliv_biaya.jml_lain2,deliv_biaya.ket_biaya,deliv_biaya.total,deliv_biaya.id_biaya');
         $this->di->where('deliv_order.deleted_at', null);
         return $this->di->getWhere(['idm_deliv' => $id])->getRowArray();
     }

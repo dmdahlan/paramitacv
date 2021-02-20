@@ -22,6 +22,7 @@ class Deliv_biaya extends BaseController
         $jmlh_2 = 0;
         $buruh_m = 0;
         $buruh_b = 0;
+        $inap = 0;
         $lain2 = 0;
         $total_biaya = 0;
 
@@ -70,6 +71,12 @@ class Deliv_biaya extends BaseController
                 $row[] = Time::parse($r->tgl_buruhbongkar)->toLocalizedString('dd-MMM-yy');
             }
             $row[] = $this->rupiah($r->jml_buruhbongkar);
+            if ($r->tgl_inap == null) {
+                $row[] = '';
+            } else {
+                $row[] = Time::parse($r->tgl_inap)->toLocalizedString('dd-MMM-yy');
+            }
+            $row[] = $this->rupiah($r->nominal_inap);
             if ($r->tgl_lain2 == null) {
                 $row[] = '';
             } else {
@@ -93,12 +100,13 @@ class Deliv_biaya extends BaseController
             $jmlh_2 += $r->jml_2;
             $buruh_m += $r->jml_buruhmuat;
             $buruh_b += $r->jml_buruhbongkar;
+            $inap += $r->nominal_inap;
             $lain2 += $r->jml_lain2;
             $total_biaya += $r->total;
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($jmlh_1), '', $this->rupiah($jmlh_2), '', $this->rupiah($buruh_m), '', $this->rupiah($buruh_b), '', $this->rupiah($lain2), '', $this->rupiah($total_biaya), ''
+            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($jmlh_1), '', $this->rupiah($jmlh_2), '', $this->rupiah($buruh_m), '', $this->rupiah($buruh_b), '', $this->rupiah($inap), '', $this->rupiah($lain2), '', $this->rupiah($total_biaya), ''
         );
         $output = array(
             "draw" => @$_POST['draw'],
@@ -131,6 +139,11 @@ class Deliv_biaya extends BaseController
         } else {
             $tgl_buruhbongkar = null;
         }
+        if (!empty($_POST['tgl_inap'])) {
+            $tgl_inap = time::parse($this->request->getPost('tgl_inap'));
+        } else {
+            $tgl_inap = null;
+        }
         if (!empty($_POST['tgl_lain2'])) {
             $tgl_lain2 = time::parse($this->request->getPost('tgl_lain2'));
         } else {
@@ -147,6 +160,8 @@ class Deliv_biaya extends BaseController
             'jml_buruhmuat'     => $this->request->getPost('jml_buruhmuat'),
             'tgl_buruhbongkar'  => $tgl_buruhbongkar,
             'jml_buruhbongkar'  => $this->request->getPost('jml_buruhbongkar'),
+            'tgl_inap'          => $tgl_inap,
+            'nominal_inap'      => $this->request->getPost('nominal_inap'),
             'tgl_lain2'         => $tgl_lain2,
             'jml_lain2'         => $this->request->getPost('jml_lain2'),
             'ket_biaya'         => $this->request->getPost('ket_biaya'),
@@ -185,6 +200,11 @@ class Deliv_biaya extends BaseController
         } else {
             $tgl_buruhbongkar = null;
         }
+        if (!empty($_POST['tgl_inap'])) {
+            $tgl_inap = time::parse($this->request->getPost('tgl_inap'));
+        } else {
+            $tgl_inap = null;
+        }
         if (!empty($_POST['tgl_lain2'])) {
             $tgl_lain2 = time::parse($this->request->getPost('tgl_lain2'));
         } else {
@@ -204,6 +224,8 @@ class Deliv_biaya extends BaseController
             'jml_buruhmuat'     => $this->request->getPost('jml_buruhmuat'),
             'tgl_buruhbongkar'  => $tgl_buruhbongkar,
             'jml_buruhbongkar'  => $this->request->getPost('jml_buruhbongkar'),
+            'tgl_inap'          => $tgl_inap,
+            'nominal_inap'      => $this->request->getPost('nominal_inap'),
             'tgl_lain2'         => $tgl_lain2,
             'jml_lain2'         => $this->request->getPost('jml_lain2'),
             'ket_biaya'         => $this->request->getPost('ket_biaya'),

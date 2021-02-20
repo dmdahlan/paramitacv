@@ -62,6 +62,8 @@
                                         <th>TGL</th>
                                         <th>BURUH BONGKAR</th>
                                         <th>TGL</th>
+                                        <th>UANG INAP</th>
+                                        <th>TGL</th>
                                         <th>LAIN2</th>
                                         <th>KET</th>
                                         <th>TOTAL</th>
@@ -217,6 +219,21 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-label">Tgl</label>
+                                    <input id="tgl_inap" name="tgl_inap" class="form-control tanggal" type="text" placeholder="Tanggal" autocomplete="off">
+                                    <span class="help-block text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Uang Inap</label>
+                                    <input id="nominal_inapp" name="nominal_inapp" class="form-control" type="text" placeholder="nominal" onkeyup="hitung()">
+                                    <input type="hidden" id="nominal_inap" name="nominal_inap">
+                                    <span class="help-block text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Tgl</label>
                                     <input id="tgl_lain2" name="tgl_lain2" class="form-control tanggal" type="text" placeholder="Tanggal" autocomplete="off">
                                     <span class="help-block text-danger"></span>
                                 </div>
@@ -237,7 +254,7 @@
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-5">
                                 <div class="form-group">
                                     <label class="form-label">Keterangan</label>
                                     <input id="ket_biaya" name="ket_biaya" class="form-control" type="text" placeholder="Keterangan">
@@ -266,6 +283,8 @@
     var jml_buruhmuat = document.getElementById('jml_buruhmuat');
     var jml_buruhbongkarr = document.getElementById('jml_buruhbongkarr');
     var jml_buruhbongkar = document.getElementById('jml_buruhbongkar');
+    var nominal_inapp = document.getElementById('nominal_inapp');
+    var nominal_inap = document.getElementById('nominal_inap');
     var jml_jmlain22 = document.getElementById('jml_lain22');
     var jml_jmlain2 = document.getElementById('jml_lain2');
 
@@ -284,6 +303,10 @@
     jml_buruhbongkarr.addEventListener('keyup', function(e) {
         jml_buruhbongkarr.value = currencyIDR(this.value);
         jml_buruhbongkar.value = this.value.replace(/\./g, '');
+    });
+    nominal_inapp.addEventListener('keyup', function(e) {
+        nominal_inapp.value = currencyIDR(this.value);
+        nominal_inap.value = this.value.replace(/\./g, '');
     });
     jml_jmlain22.addEventListener('keyup', function(e) {
         jml_jmlain22.value = currencyIDR(this.value);
@@ -322,15 +345,17 @@
         var getjml_2 = document.getElementById('jml_22').value;
         var getmuat = document.getElementById('jml_buruhmuatt').value;
         var getbongkar = document.getElementById('jml_buruhbongkarr').value;
+        var getinap = document.getElementById('nominal_inapp').value;
         var getlain2 = document.getElementById('jml_lain22').value;
 
         var jml_1 = getjml_1.split(".").join("");
         var jml_2 = getjml_2.split(".").join("");
         var muat = getmuat.split(".").join("");
         var bongkar = getbongkar.split(".").join("");
+        var inap = getinap.split(".").join("");
         var lain2 = getlain2.split(".").join("");
 
-        var grand = Number(jml_1) + Number(jml_2) + Number(muat) + Number(bongkar) + Number(lain2);
+        var grand = Number(jml_1) + Number(jml_2) + Number(muat) + Number(bongkar) + Number(inap) + Number(lain2);
 
         var currencytotal = currencyIDR(grand, '');
         document.getElementById('totall').value = currencytotal;
@@ -448,6 +473,9 @@
                 $('#tgl_buruhbongkar').val(data.tgl_buruhbongkar);
                 $('#jml_buruhbongkar').val(data.jml_buruhbongkar);
                 $('#jml_buruhbongkarr').val(data.jml_buruhbongkar);
+                $('#tgl_inap').val(data.tgl_inap);
+                $('#nominal_inapp').val(data.nominal_inap);
+                $('#nominal_inap').val(data.nominal_inap);
                 $('#tgl_lain2').val(data.tgl_lain2);
                 $('#jml_lain2').val(data.jml_lain2);
                 $('#jml_lain22').val(data.jml_lain2);
