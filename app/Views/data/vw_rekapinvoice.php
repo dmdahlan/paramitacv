@@ -158,6 +158,7 @@
                                         <option value="danamon">Danamon</option>
                                         <option value="bca">BCA</option>
                                         <option value="bri">BRI</option>
+                                        <option value="kas">KAS</option>
                                     </select>
                                 </div>
                             </div>
