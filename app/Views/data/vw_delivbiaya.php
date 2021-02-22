@@ -403,7 +403,7 @@
                 [20, 100, 500, 1500],
                 [20, 100, 500, 1500]
             ],
-            "scrollY": 620,
+            "scrollY": 720,
             "scrollX": true,
             "scrollCollapse": true,
             "fixedColumns": {
