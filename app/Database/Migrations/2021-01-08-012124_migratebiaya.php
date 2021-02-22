@@ -21,6 +21,8 @@ class Migratebiaya extends Migration
 			'jml_buruhbongkar'  => ['type' => 'INT', 'constraint' => 11, 'null' => true],
 			'tgl_inap' 			=> ['type' => 'DATE', 'null' => true],
 			'nominal_inap'  	=> ['type' => 'INT', 'constraint' => 11, 'null' => true],
+			'tgl_portal' 		=> ['type' => 'DATE', 'null' => true],
+			'nominal_portal'  	=> ['type' => 'INT', 'constraint' => 11, 'null' => true],
 			'tgl_lain2' 		=> ['type' => 'DATE', 'null' => true],
 			'jml_lain2'  		=> ['type' => 'INT', 'constraint' => 11, 'null' => true],
 			'ket_biaya'  		=> ['type' => 'VARCHAR', 'constraint' => 225, 'null' => true],

@@ -23,6 +23,7 @@ class Deliv_biaya extends BaseController
         $buruh_m = 0;
         $buruh_b = 0;
         $inap = 0;
+        $portal = 0;
         $lain2 = 0;
         $total_biaya = 0;
 
@@ -77,6 +78,12 @@ class Deliv_biaya extends BaseController
                 $row[] = Time::parse($r->tgl_inap)->toLocalizedString('dd-MMM-yy');
             }
             $row[] = $this->rupiah($r->nominal_inap);
+            if ($r->tgl_portal == null) {
+                $row[] = '';
+            } else {
+                $row[] = Time::parse($r->tgl_portal)->toLocalizedString('dd-MMM-yy');
+            }
+            $row[] = $this->rupiah($r->nominal_portal);
             if ($r->tgl_lain2 == null) {
                 $row[] = '';
             } else {
@@ -101,12 +108,13 @@ class Deliv_biaya extends BaseController
             $buruh_m += $r->jml_buruhmuat;
             $buruh_b += $r->jml_buruhbongkar;
             $inap += $r->nominal_inap;
+            $portal += $r->nominal_portal;
             $lain2 += $r->jml_lain2;
             $total_biaya += $r->total;
             $data[] = $row;
         }
         $data[] = array(
-            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($jmlh_1), '', $this->rupiah($jmlh_2), '', $this->rupiah($buruh_m), '', $this->rupiah($buruh_b), '', $this->rupiah($inap), '', $this->rupiah($lain2), '', $this->rupiah($total_biaya), ''
+            '', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($jmlh_1), '', $this->rupiah($jmlh_2), '', $this->rupiah($buruh_m), '', $this->rupiah($buruh_b), '', $this->rupiah($inap), '', $this->rupiah($portal), '', $this->rupiah($lain2), '', $this->rupiah($total_biaya), ''
         );
         $output = array(
             "draw" => @$_POST['draw'],
@@ -144,6 +152,11 @@ class Deliv_biaya extends BaseController
         } else {
             $tgl_inap = null;
         }
+        if (!empty($_POST['tgl_portal'])) {
+            $tgl_portal = time::parse($this->request->getPost('tgl_portal'));
+        } else {
+            $tgl_portal = null;
+        }
         if (!empty($_POST['tgl_lain2'])) {
             $tgl_lain2 = time::parse($this->request->getPost('tgl_lain2'));
         } else {
@@ -162,6 +175,8 @@ class Deliv_biaya extends BaseController
             'jml_buruhbongkar'  => $this->request->getPost('jml_buruhbongkar'),
             'tgl_inap'          => $tgl_inap,
             'nominal_inap'      => $this->request->getPost('nominal_inap'),
+            'tgl_portal'        => $tgl_portal,
+            'nominal_portal'    => $this->request->getPost('nominal_portal'),
             'tgl_lain2'         => $tgl_lain2,
             'jml_lain2'         => $this->request->getPost('jml_lain2'),
             'ket_biaya'         => $this->request->getPost('ket_biaya'),
@@ -205,6 +220,11 @@ class Deliv_biaya extends BaseController
         } else {
             $tgl_inap = null;
         }
+        if (!empty($_POST['tgl_portal'])) {
+            $tgl_portal = time::parse($this->request->getPost('tgl_portal'));
+        } else {
+            $tgl_portal = null;
+        }
         if (!empty($_POST['tgl_lain2'])) {
             $tgl_lain2 = time::parse($this->request->getPost('tgl_lain2'));
         } else {
@@ -226,6 +246,8 @@ class Deliv_biaya extends BaseController
             'jml_buruhbongkar'  => $this->request->getPost('jml_buruhbongkar'),
             'tgl_inap'          => $tgl_inap,
             'nominal_inap'      => $this->request->getPost('nominal_inap'),
+            'tgl_portal'        => $tgl_portal,
+            'nominal_portal'    => $this->request->getPost('nominal_portal'),
             'tgl_lain2'         => $tgl_lain2,
             'jml_lain2'         => $this->request->getPost('jml_lain2'),
             'ket_biaya'         => $this->request->getPost('ket_biaya'),
