@@ -400,8 +400,8 @@
             "autowidth": true,
             "ordering": true,
             "lengthMenu": [
-                [10, 100, 500, 1500],
-                [10, 100, 500, 1500]
+                [20, 100, 500, 1500],
+                [20, 100, 500, 1500]
             ],
             "scrollY": 500,
             "scrollX": true,
