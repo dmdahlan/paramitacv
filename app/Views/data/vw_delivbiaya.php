@@ -398,6 +398,8 @@
                 [10, 100, 500, 1500],
                 [10, 100, 500, 1500]
             ],
+            "scrollY": 350,
+            "scrollX": true,
             // Load data for the table's content from an Ajax source
             ajax: {
                 "url": "<?php echo site_url('deliv_biaya/ajax_list'); ?>",
