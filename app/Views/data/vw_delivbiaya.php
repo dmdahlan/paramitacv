@@ -1,5 +1,10 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
+<style>
+    table {
+        size: 10px;
+    }
+</style>
 <section class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -39,8 +44,8 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table table-responsive table-sm" style="font-size: 14px;">
-                            <table id="biaya" class="table table-bordered table-hover table-striped js-basic-example dataTable nowrap cell-border" cellspacing="0" width="100%" role="grid">
+                        <div class="card-body table table-sm">
+                            <table id="biaya" class="table table-striped table-bordered nowrap" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>NO</th>
@@ -58,13 +63,13 @@
                                         <th>TGL</th>
                                         <th>NOMINAL</th>
                                         <th>TGL</th>
-                                        <th>BURUH MUAT</th>
+                                        <th>MUAT</th>
                                         <th>TGL</th>
-                                        <th>BURUH BONGKAR</th>
+                                        <th>BONGKAR</th>
                                         <th>TGL</th>
-                                        <th>UANG INAP</th>
+                                        <th>INAP</th>
                                         <th>TGL</th>
-                                        <th>UANG PORTAL</th>
+                                        <th>PORTAL</th>
                                         <th>TGL</th>
                                         <th>LAIN2</th>
                                         <th>KET</th>
@@ -236,7 +241,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="form-label">Tgl</label>
-                                    <input id="tgl_inap" name="tgl_portal" class="form-control tanggal" type="text" placeholder="Tanggal" autocomplete="off">
+                                    <input id="tgl_portal" name="tgl_portal" class="form-control tanggal" type="text" placeholder="Tanggal" autocomplete="off">
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
@@ -400,6 +405,10 @@
             ],
             "scrollY": 350,
             "scrollX": true,
+            "scrollCollapse": true,
+            "fixedColumns": {
+                "leftColumns": 10
+            },
             // Load data for the table's content from an Ajax source
             ajax: {
                 "url": "<?php echo site_url('deliv_biaya/ajax_list'); ?>",
@@ -503,7 +512,7 @@
                 $('#tgl_inap').val(data.tgl_inap);
                 $('#nominal_inapp').val(data.nominal_inap);
                 $('#nominal_inap').val(data.nominal_inap);
-                $('#tgl_inap').val(data.tgl_inap);
+                $('#tgl_portal').val(data.tgl_portal);
                 $('#nominal_portall').val(data.nominal_portal);
                 $('#nominal_portal').val(data.nominal_portal);
                 $('#tgl_lain2').val(data.tgl_lain2);
@@ -630,8 +639,11 @@
 
 <?= $this->section('css') ?>
 <!-- DataTables -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">-->
 <link rel="stylesheet" href="<?= base_url(''); ?>/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" />
 <link rel="stylesheet" href="<?= base_url(''); ?>/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.3.2/css/fixedColumns.bootstrap4.min.css">
 <!-- SweetAlert2 -->
 <link rel="stylesheet" href="<?= base_url(''); ?>/assets/tambahan/sweetalert2/dist/sweetalert2.min.css">
 <!-- bootstrap datepicker -->
@@ -640,10 +652,14 @@
 
 <?= $this->section('js') ?>
 <!-- DataTables -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>-->
 <script src="<?= base_url(''); ?>/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url(''); ?>/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url(''); ?>/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url(''); ?>/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/fixedcolumns/3.3.2/js/dataTables.fixedColumns.min.js"></script>
 <!-- SweetAlert2 -->
 <script src="<?= base_url(''); ?>/assets/tambahan/sweetalert2/dist/sweetalert2.min.js"></script>
 <!-- date-picker -->
