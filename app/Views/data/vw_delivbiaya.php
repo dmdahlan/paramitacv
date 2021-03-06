@@ -421,7 +421,7 @@
             "columnDefs": [{
                 "targets": [10, 12, 14, 16, 18, 20],
                 "className": 'text-right'
-            }]
+            }],
         });
     });
     $('#nopoll').keyup(function() {

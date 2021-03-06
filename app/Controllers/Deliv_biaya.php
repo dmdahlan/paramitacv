@@ -95,12 +95,12 @@ class Deliv_biaya extends BaseController
             // opsi
             if ($r->total == '') {
                 $row[] =
-                    '<a class="btn btn-warning aa btn-xs" href="javascript:void(0)" title="tambah" onclick="tambah_biaya(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
+                    '<a class="btn btn-warning btn-xs" href="javascript:void(0)" title="tambah" onclick="tambah_biaya(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
                     ';
             } else {
                 $row[] =
-                    '<a class="btn btn-warning btn-xs aa" href="javascript:void(0)" title="Edit" onclick="edit_biaya(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
-                    <a class="btn btn-danger btn-xs aa" href="javascript:void(0)" title="Edit" onclick="hapus_biaya(' . "'" . $r->id_biaya . "'" . ')">hapus</a>
+                    '<a class="btn btn-warning btn-xs" href="javascript:void(0)" title="Edit" onclick="edit_biaya(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
+                    <a class="btn btn-danger btn-xs" href="javascript:void(0)" title="Edit" onclick="hapus_biaya(' . "'" . $r->id_biaya . "'" . ')">hapus</a>
                     ';
             }
             $jmlh_1 += $r->jml_1;

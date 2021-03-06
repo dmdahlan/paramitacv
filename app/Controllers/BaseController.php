@@ -16,10 +16,16 @@ namespace App\Controllers;
  */
 
 use CodeIgniter\Controller;
+use CodeIgniter\HTTP\IncomingRequest;
 
 class BaseController extends Controller
 {
-
+	/**
+	 * Instance of the main Request object.
+	 *
+	 * @var IncomingRequest
+	 */
+	protected $request;
 	/**
 	 * An array of helpers to be loaded automatically upon
 	 * class instantiation. These helpers will be available

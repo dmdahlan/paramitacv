@@ -122,7 +122,7 @@
                                     <label class="form-label">NO Kendaraan</label>
                                     <select id="nopol_idm" name="nopol_idm" class="form-control select2">
                                     </select>
-                                    <input type="hidden" name="kapasitas" id="kapasitas">
+                                    <input type="hidden" id="kapasitas" name="kapasitas">
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
@@ -300,7 +300,6 @@
         $('.help-block').empty();
         $('#md-form-deliv').modal('hide');
         $('.is-invalid').removeClass('is-invalid');
-        $("input[type=hidden]").val('');
     }
 
     function refresh() {
@@ -316,20 +315,7 @@
 
         table.ajax.reload(null, false);
     }
-    $('#nopol_idm').change(function() {
-        var data = $('#nopol_idm').val();
-        $.ajax({
-            url: '<?= site_url('master_unit/edit_unit/') ?>' + data,
-            type: 'GET',
-            dataType: 'JSON',
-            success: function(data) {
-                $('#kapasitas').val(data.kapasitas);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                alert('Error!');
-            }
-        });
-    });
+
 
     function tambah_deliv() {
         method = 'save';
@@ -361,7 +347,6 @@
                     $('.help-block').empty();
                     $('.is-invalid').removeClass('is-invalid');
                     $('#frm-modal-deliv')[0].reset();
-                    $("input[type=hidden]").val('');
                     $('#md-form-deliv').modal('hide');
                     alertsukses();
                     reload_table();
@@ -473,6 +458,20 @@
             }
         });
     }
+    $('#nopol_idm,#dari_idm,#tujuan_idm,#driver_idm').change(function() {
+        var data = $('#nopol_idm').val();
+        $.ajax({
+            url: '<?= site_url('master_unit/edit_unit/') ?>' + data,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(data) {
+                $('#kapasitas').val(data.kapasitas);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Error!');
+            }
+        });
+    });
 
     function init_select() {
         let dropdown_nopol = $('#nopol_idm');
@@ -484,6 +483,11 @@
         $.getJSON(url_nopol, function(data) {
             $.each(data, function(key, entry) {
                 dropdown_nopol.append($('<option></option>').attr('value', entry.idm_nopol).text(entry.nopol));
+            })
+        });
+        $.getJSON(url_nopol, function(data) {
+            $.each(data, function(key, entry) {
+                dropdown_nopoll.append($('<option></option>').attr('value', entry.idm_nopol).text(entry.nopol));
             })
         });
         let dropdown_driver = $('#driver_idm');

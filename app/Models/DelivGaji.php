@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class DelivGaji extends Model
 {
     protected $table = 'deliv_gaji';
-    protected $allowedFields = ['tgl_gaji', 'deliv_idm'];
+    protected $allowedFields = ['tgl_gaji', 'deliv_idm', 'nominal_gaji'];
     protected $id = 'idm_gaji';
     protected $primaryKey = 'idm_gaji';
     protected $useTimestamps = true;
@@ -34,7 +34,7 @@ class DelivGaji extends Model
             ->join('master_unit', 'master_unit.idm_nopol = deliv_order.nopol_idm', 'left')
             ->join('master_dari', 'master_dari.idm_dari = deliv_order.dari_idm', 'left')
             ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuan_idm', 'left')
-            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari,deliv_gaji.tgl_gaji,master_driver.nama, master_produk.produk,master_tujuan.tujuan,master_gaji.gaji,deliv_gaji.idm_gaji');
+            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari,deliv_gaji.tgl_gaji,deliv_gaji.nominal_gaji,master_driver.nama, master_produk.produk,master_tujuan.tujuan,master_gaji.gaji,deliv_gaji.idm_gaji');
         $this->dt->where('deliv_order.deleted_at', null);
         $request = \Config\Services::request();
         if ($request->getVar('bk') == 'BELUM KEMBALI') {
@@ -50,7 +50,7 @@ class DelivGaji extends Model
             $this->dt->where('tgl_gaji !=', null);
         }
         if ($request->getVar('tglgaji')) {
-            $this->dt->where('tgl_gaji', $request->getVar('tglgaji'));
+            $this->dt->like('tgl_gaji',  date('Y-m', strtotime($request->getPost('tglgaji'))));
         }
         $i = 0;
         foreach ($this->column_search as $item) {
@@ -92,7 +92,9 @@ class DelivGaji extends Model
             ->join('master_dari', 'master_dari.idm_dari = deliv_order.dari_idm', 'left')
             ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuan_idm', 'left')
             ->join('master_produk', 'master_produk.idm_produk = deliv_order.produk_idm', 'left')
-            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari, master_tujuan.tujuan,master_produk.produk,deliv_gaji.idm_gaji,deliv_gaji.tgl_gaji');
+            ->join('master_driver', 'master_driver.idm_driver = deliv_order.driver_idm', 'left')
+            ->join('master_gaji', 'master_gaji.ketjuan = deliv_order.ketjuan', 'left')
+            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_dari.dari, master_tujuan.tujuan,master_produk.produk,deliv_gaji.idm_gaji,deliv_gaji.tgl_gaji,master_driver.nama,master_gaji.gaji as nominal_gaji');
         $this->dg->where('deliv_order.deleted_at', null);
         return $this->dg->getWhere(['idm_deliv' => $id])->getRowArray();
     }

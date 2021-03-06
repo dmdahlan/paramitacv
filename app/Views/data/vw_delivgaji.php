@@ -114,6 +114,13 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
+                                    <label class="form-label">Driver</label>
+                                    <input id="driver_idm" name="driver_idm" class="form-control" readonly>
+                                    <span class="help-block text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
                                     <label class="form-label">NO Kendaraan</label>
                                     <input id="nopol_idm" name="nopol_idm" class="form-control" readonly>
                                     <span class="help-block text-danger"></span>
@@ -128,14 +135,14 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="form-label">Destinasi</label>
+                                    <label class="form-label">Dari</label>
                                     <input id="dari_idm" name="dari_idm" class="form-control" readonly>
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="form-label">Destinasi</label>
+                                    <label class="form-label">Tujuan</label>
                                     <input id="tujuan_idm" name="tujuan_idm" class="form-control" readonly>
                                     <span class="help-block text-danger"></span>
                                 </div>
@@ -149,8 +156,15 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="form-label">Tgl Gaji</label>
+                                    <label class="form-label">Periode</label>
                                     <input id="tgl_gaji" name="tgl_gaji" class="form-control tanggal" type="text" placeholder="Tanggal Gaji" autocomplete="off">
+                                    <span class="help-block text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">Gaji</label>
+                                    <input id="nominal_gaji" name="nominal_gaji" class="form-control" type="text" placeholder="Nominal" autocomplete="off">
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
@@ -239,12 +253,13 @@
                 $('#deliv_idm').val(data.idm_deliv);
                 $('#tgl_deliv').val(data.tgl);
                 $('#sj_kembali').val(data.sj_kembali);
-                $('#driver_idm').val(data.driver);
+                $('#driver_idm').val(data.nama);
                 $('#nopol_idm').val(data.nopol);
                 $('#produk_idm').val(data.produk);
                 $('#dari_idm').val(data.dari);
                 $('#tujuan_idm').val(data.tujuan);
                 $('#shipment').val(data.shipment);
+                $('#nominal_gaji').val(data.nominal_gaji);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Error!');
@@ -266,13 +281,14 @@
                 $('#deliv_idm').val(data.idm_deliv);
                 $('#tgl_deliv').val(data.tgl);
                 $('#sj_kembali').val(data.sj_kembali);
-                $('#driver_idm').val(data.driver);
+                $('#driver_idm').val(data.nama);
                 $('#nopol_idm').val(data.nopol);
                 $('#produk_idm').val(data.produk);
                 $('#dari_idm').val(data.dari);
                 $('#tujuan_idm').val(data.tujuan);
                 $('#shipment').val(data.shipment);
                 $('#tgl_gaji').val(data.tgl_gaji);
+                $('#nominal_gaji').val(data.nominal_gaji);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Error!');
@@ -376,7 +392,7 @@
     $('.tanggal').datepicker({
         startView: "months",
         minViewMode: "months",
-        format: 'yyyy-mm-dd'
+        format: 'MM yyyy'
     }).on('change', function() {
         $('.datepicker').hide();
     });

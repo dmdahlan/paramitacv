@@ -42,8 +42,12 @@ class Deliv_gaji extends BaseController
             $row[] = $r->produk;
             $row[] = $r->dari;
             $row[] = $r->tujuan;
-            $row[] = $this->rupiah($r->gaji);
-
+            if ($r->tgl_gaji == '') {
+                $nominal = $r->gaji;
+            } else {
+                $nominal = $r->nominal_gaji;
+            }
+            $row[] = $this->rupiah($nominal);
             if ($r->tgl_gaji == '') {
                 $row[] =
                     '<a class="btn btn-warning btn-xs" href="javascript:void(0)" title="tambah" onclick="tambah_gaji(' . "'" . $r->idm_deliv . "'" . ')">Edit</a>
@@ -73,8 +77,9 @@ class Deliv_gaji extends BaseController
     {
         $this->_validate('save');
         $data = [
-            'deliv_idm'       => $this->request->getVar('deliv_idm'),
-            'tgl_gaji'        => $this->request->getVar('tgl_gaji')
+            'deliv_idm'       => $this->request->getPost('deliv_idm'),
+            'tgl_gaji'        => time::parse($this->request->getPost('tgl_gaji')),
+            'nominal_gaji'    => $this->request->getPost('nominal_gaji'),
         ];
         if ($this->deliverygaji->save($data)) {
             echo json_encode(['status' => TRUE]);
@@ -89,13 +94,14 @@ class Deliv_gaji extends BaseController
     }
     public function update_gaji()
     {
+        $id = $this->request->getPost('id');
         $data = [
-            'idm_gaji'         => $this->request->getVar('id'),
-            'deliv_idm'        => $this->request->getVar('deliv_idm'),
-            'tgl_gaji'         => $this->request->getVar('tgl_gaji')
+            'deliv_idm'        => $this->request->getPost('deliv_idm'),
+            'tgl_gaji'         => time::parse($this->request->getPost('tgl_gaji')),
+            'nominal_gaji'     => $this->request->getPost('nominal_gaji'),
         ];
 
-        if ($this->deliverygaji->save($data)) {
+        if ($this->deliverygaji->update($id, $data)) {
             echo json_encode(['status' => TRUE]);
         } else {
             echo json_encode(['status' => FALSE]);

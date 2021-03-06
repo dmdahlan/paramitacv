@@ -24,6 +24,11 @@ class Migratedlivgaji extends Migration
 				'type'           => 'DATE',
 				'null'			 => true,
 			],
+			'nominal_gaji'	     => [
+				'type'           => 'INT',
+				'constraint'     => 11,
+				'null'			 => true,
+			],
 			'created_at' 	   => [
 				'type'			 => 'DATETIME',
 				'null'			 => true

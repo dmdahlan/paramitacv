@@ -91,7 +91,7 @@ class Deliv_order extends BaseController
             'shipment'        => $this->request->getPost('shipment'),
             'qty'             => $this->request->getPost('qty'),
             'claim'           => $this->request->getPost('claim'),
-            'ketjuan'         => $ketjuan
+            'ketjuan'         => $ketjuan,
         ];
         if ($this->delivery->save($data)) {
             echo json_encode(['status' => TRUE]);
@@ -131,7 +131,7 @@ class Deliv_order extends BaseController
             'shipment'        => $this->request->getVar('shipment'),
             'qty'             => $this->request->getVar('qty'),
             'claim'           => $this->request->getVar('claim'),
-            'ketjuan'         => $ketjuan
+            'ketjuan'         => $ketjuan,
         ];
 
         if ($this->delivery->save($data)) {
