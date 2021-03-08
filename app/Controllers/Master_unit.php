@@ -64,7 +64,7 @@ class Master_unit extends BaseController
             echo json_encode(['status' => FALSE]);
         }
     }
-    public function edit_unit($id)
+    public function edit_unit($id = 0)
     {
         $data = $this->masterunit->find($id);
         echo json_encode($data);
