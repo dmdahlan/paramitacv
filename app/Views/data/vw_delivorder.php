@@ -71,7 +71,8 @@
                                         <th>DARI</th>
                                         <th>TUJUAN(GAJI)</th>
                                         <th>TUJUAN(INVOICE)</th>
-                                        <th>OUTLET</th>
+                                        <th>ADDRESS</th>
+                                        <th>KET LAIN2</th>
                                         <th>PRODUK</th>
                                         <th>CUSTOMER</th>
                                         <th>SHIPMENT</th>
@@ -184,8 +185,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class=" form-group">
-                                    <label class="form-label">Outlet</label>
-                                    <input id="outlet" name="outlet" class="form-control" placeholder="outlet" type="text">
+                                    <label class="form-label">Ket Lain2</label>
+                                    <input id="outlet" name="outlet" class="form-control" placeholder="Ket Lain2" type="text">
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>

@@ -39,6 +39,7 @@ class Deliv_order extends BaseController
             $row[] = $r->dari;
             $row[] = $r->tujuan;
             $row[] = $r->tujuaninv;
+            $row[] = $r->keterangan_tujuan;
             $row[] = $r->outlet;
             $row[] = $r->produk;
             $row[] = $r->customer;
