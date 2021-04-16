@@ -34,6 +34,11 @@ class Migratedelivinvoice extends Migration
 				'constraint'     => 100,
 				'null'			 => true,
 			],
+			'po'	     	 => [
+				'type'           => 'VARCHAR',
+				'constraint'     => 100,
+				'null'			 => true,
+			],
 			'nominal'	     => [
 				'type'           => 'INT',
 				'constraint'     => 11,

@@ -72,6 +72,7 @@
                                         <th>TGL INV</th>
                                         <th>NO INV</th>
                                         <th>BILLING</th>
+                                        <th>PO</th>
                                         <th>INVOICE</th>
                                         <th>BIAYA</th>
                                         <th>GAJI</th>
@@ -184,6 +185,13 @@
                                 <div class="form-group">
                                     <label class="form-label">Billing</label>
                                     <input id="billing" name="billing" class="form-control" type="text" placeholder="Billing">
+                                    <span class="help-block text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="form-label">PO</label>
+                                    <input id="po" name="po" class="form-control" type="text" placeholder="Po">
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
@@ -336,6 +344,7 @@
                 $('#tgl_inv').val(data.tgl_inv);
                 $('#no_inv').val(data.no_inv);
                 $('#billing').val(data.billing);
+                $('#po').val(data.po);
                 $('#nominal').val(data.tarif);
                 $('#nominall').val(data.tarif);
             },
@@ -360,7 +369,6 @@
             processData: false,
             success: function(data) {
                 if (data.status) {
-
                     $('.help-block').empty();
                     $('.is-invalid').removeClass('is-invalid');
                     $('#frm-modal-invoice')[0].reset();

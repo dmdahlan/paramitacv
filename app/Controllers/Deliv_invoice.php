@@ -56,6 +56,7 @@ class Deliv_invoice extends BaseController
             }
             $row[] = $r->no_inv;
             $row[] = $r->billing;
+            $row[] = $r->po;
             $row[] = $this->rupiah($nominal);
             $row[] = $this->rupiah($r->ttlbiaya);
             $row[] = $this->rupiah($r->gaji);
@@ -79,7 +80,7 @@ class Deliv_invoice extends BaseController
             $data[] = $row;
         }
         $data[] = array(
-            '', '', 'TOTAL', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($totalbiaya),  $this->rupiah($totalgaji), $this->rupiah($margin), '', ''
+            '', '', 'TOTAL', '', '', '', '', '', '', '', '', '', 'TOTAL', $this->rupiah($total), $this->rupiah($totalbiaya),  $this->rupiah($totalgaji), $this->rupiah($margin), '', ''
         );
         $output = array(
             "draw" => @$_POST['draw'],
@@ -107,6 +108,7 @@ class Deliv_invoice extends BaseController
             'tgl_inv'         => $this->request->getVar('tgl_inv'),
             'no_inv'          => $this->request->getVar('no_inv'),
             'billing'         => $this->request->getVar('billing'),
+            'po'               => $this->request->getVar('po'),
             'nominal'         => $this->request->getVar('nominal')
         ];
         if ($this->deliveryinvoice->save($data)) {
@@ -125,16 +127,17 @@ class Deliv_invoice extends BaseController
         //Validasi
         $this->_validate('update');
 
+        $id = $this->request->getVar('id');
         $data = [
-            'idm_inv'         => $this->request->getVar('id'),
             'deliv_idm'       => $this->request->getVar('deliv_idm'),
             'tgl_inv'         => $this->request->getVar('tgl_inv'),
             'no_inv'          => $this->request->getVar('no_inv'),
             'billing'         => $this->request->getVar('billing'),
-            'nominal'         => $this->request->getVar('nominal')
+            'po'               => $this->request->getVar('po'),
+            'nominal'         => $this->request->getVar('nominal'),
         ];
 
-        if ($this->deliveryinvoice->save($data)) {
+        if ($this->deliveryinvoice->update($id, $data)) {
             echo json_encode(['status' => TRUE]);
         } else {
             echo json_encode(['status' => FALSE]);

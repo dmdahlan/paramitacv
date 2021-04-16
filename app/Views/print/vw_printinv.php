@@ -72,12 +72,14 @@ use CodeIgniter\I18n\Time;
                 <div class="col-sm-1 invoice-col">
                     <address style=" font-size:20px">
                         INVOICE<br>
-                        TANGGAL
+                        TANGGAL <br>
+                        PO
                     </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-1 invoice-col">
                     <address style=" font-size:20px">
+                        :<br>
                         :<br>
                         :
                     </address>
@@ -87,6 +89,7 @@ use CodeIgniter\I18n\Time;
                     <address style=" font-size:20px">
                         <?= $ket['no_inv'] ?><br>
                         <?= Time::parse($ket['tgl_inv'])->toLocalizedString('dd MMMM yyyy') ?>
+                        <?= $ket['po'] ?><br>
                     </address>
                 </div>
                 <div class="col-sm-4 invoice-col">
@@ -121,7 +124,8 @@ use CodeIgniter\I18n\Time;
 
 
                             $i = 1;
-                            $total_inv = 0;
+                            $dpp = 0;
+                            $dppppn = 0;
                             $ppn = 0;
                             $pph = 0;
                             $grand_total = 0;
@@ -136,7 +140,7 @@ use CodeIgniter\I18n\Time;
                                     <td style="border: 1px solid black; font-size:20px"><?= $r['shipment'] ?></td>
                                     <td style="border: 1px solid black; font-size:20px"><?= number_format($r['qty'], 0, ',', '.') ?></td>
                                     <td style="border: 1px solid black; font-size:20px" class="text-right"><?= number_format($r['nominal'], 0, ',', '.') ?></td>
-                                    <?php $total_inv += $r['nominal'] ?>
+                                    <?php $dpp += $r['nominal'] ?>
                                 </tr>
                             <?php endforeach ?>
                         </tbody>
@@ -164,33 +168,41 @@ use CodeIgniter\I18n\Time;
                         <table class="table" rules=rows>
                             <?php
                             if ($ket['ppninv'] == 1) {
-                                $ppn = $total_inv * 10 / 100;
+                                $ppn = $dpp * 10 / 100;
                             } else {
                                 $ppn = null;
                             }
                             if ($ket['pphinv'] == 1) {
-                                $pph = $total_inv * 2 / 100;
+                                $pph = $dpp * 2 / 100;
                             } else {
                                 $pph = null;
                             }
-                            $grand_total = $total_inv + $ppn - $pph;
+                            $dppppn = $dpp + $ppn;
+                            $grand_total = $dpp + $ppn - $pph;
                             ?>
                             <tr>
                                 <th></th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <th style="width:40%; font-size:20px">Total</th>
+                                <th style="width:40%; font-size:20px">Dpp</th>
                                 <td style=" font-size:20px">:</td>
-                                <td class="text-right" style=" font-size:20px"><?= number_format($total_inv, 0, ',', '.') ?></td>
+                                <td class="text-right" style=" font-size:20px"><?= number_format($dpp, 0, ',', '.') ?></td>
                                 <td style=" font-size:20px"></td>
                             </tr>
                             <tr>
                                 <th style=" font-size:20px">PPN 10%</th>
                                 <td style=" font-size:20px">:</td>
                                 <td class="text-right" style=" font-size:20px"><?= number_format($ppn, 0, ',', '.') ?></td>
+                                <td style=" font-size:20px"></td>
+                            </tr>
+                            <tr>
+                                <th style=" font-size:20px">DPP+PPN</th>
+                                <td style=" font-size:20px">:</td>
+                                <td class="text-right" style=" font-size:20px"><?= number_format($dppppn, 0, ',', '.') ?></td>
                                 <td style=" font-size:20px"></td>
                             </tr>
                             <tr>

@@ -22,6 +22,7 @@ class PrintInvoice extends Model
     public function ket($keyword)
     {
         return $this->db->table('deliv_order')
+            ->select('deliv_invoice.po,deliv_invoice.no_inv')
             ->join('master_produk', 'master_produk.idm_produk=deliv_order.produk_idm', 'left')
             ->join('deliv_invoice', 'deliv_invoice.deliv_idm=deliv_order.idm_deliv', 'left')
             ->select('deliv_order.*,deliv_invoice.no_inv,deliv_invoice.tgl_inv,master_produk.customer,master_produk.alamat,master_produk.ppn as ppninv,master_produk.pph as pphinv')
