@@ -40,7 +40,7 @@ class DelivOrder extends Model
             ->join('master_tujuan as tujuan_inv', 'tujuan_inv.idm_tujuan = deliv_order.tujuaninv_idm', 'left')
             ->join('master_produk', 'master_produk.idm_produk = deliv_order.produk_idm', 'left')
             ->join('deliv_biaya', 'deliv_biaya.deliv_idm=deliv_order.idm_deliv', 'left')
-            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_driver.nama,master_dari.dari as dari, master_tujuan.tujuan as tujuan,master_tujuan.keterangan as keterangan_tujuan,tujuan_inv.tujuan as tujuaninv,master_produk.produk as produk,master_produk.customer,deliv_biaya.deliv_idm');
+            ->select('deliv_order.*, deliv_order.tgl as tgl_deliv, master_unit.nopol,master_driver.nama,master_dari.dari as dari, master_tujuan.tujuan as tujuan,tujuan_inv.tujuan as tujuaninv,tujuan_inv.keterangan as keterangan_tujuan,master_produk.produk as produk,master_produk.customer,deliv_biaya.deliv_idm');
         $this->dt->where('deliv_order.deleted_at', null);
 
         $request = \Config\Services::request();

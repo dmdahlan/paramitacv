@@ -183,18 +183,19 @@
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class=" form-group">
-                                    <label class="form-label">Ket Lain2</label>
-                                    <input id="outlet" name="outlet" class="form-control" placeholder="Ket Lain2" type="text">
-                                    <span class="help-block text-danger"></span>
-                                </div>
-                            </div>
+
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label class="form-label">Produk</label>
                                     <select id="produk_idm" name="produk_idm" class="form-control select2">
                                     </select>
+                                    <span class="help-block text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class=" form-group">
+                                    <label class="form-label">Adress</label>
+                                    <input id="address" name="address" class="form-control" placeholder="Address" type="text" readonly>
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
@@ -232,6 +233,13 @@
                                 <div class="form-group">
                                     <label class="form-label">Claim</label>
                                     <input id="claim" name="claim" class="form-control" placeholder="Claim" type="text">
+                                    <span class="help-block text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class=" form-group">
+                                    <label class="form-label">Ket Lain2</label>
+                                    <input id="outlet" name="outlet" class="form-control" placeholder="Ket Lain2" type="text">
                                     <span class="help-block text-danger"></span>
                                 </div>
                             </div>
@@ -459,6 +467,20 @@
             }
         });
     }
+    $('#tujuaninv_idm').change(function() {
+        var dataAdress = $('#tujuaninv_idm').val();
+        $.ajax({
+            url: '<?= site_url('master_tujuan/edit_tujuan/') ?>' + dataAdress,
+            type: 'GET',
+            dataType: 'JSON',
+            success: function(data) {
+                $('#address').val(data.keterangan);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Error!');
+            }
+        });
+    });
     $('#nopol_idm,#dari_idm,#tujuan_idm,#driver_idm').change(function() {
         var data = $('#nopol_idm').val();
         $.ajax({
