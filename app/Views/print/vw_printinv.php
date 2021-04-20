@@ -88,7 +88,7 @@ use CodeIgniter\I18n\Time;
                 <div class="col-sm-5 invoice-col">
                     <address style=" font-size:20px">
                         <?= $ket['no_inv'] ?><br>
-                        <?= Time::parse($ket['tgl_inv'])->toLocalizedString('dd MMMM yyyy') ?>
+                        <?= Time::parse($ket['tgl_inv'])->toLocalizedString('dd MMMM yyyy') ?><br>
                         <?= $ket['po'] ?><br>
                     </address>
                 </div>
