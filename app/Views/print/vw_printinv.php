@@ -185,10 +185,9 @@ use CodeIgniter\I18n\Time;
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
                             </tr>
                             <tr>
-                                <th style="width:40%; font-size:20px">Dpp</th>
+                                <th style="width:40%; font-size:20px">DPP</th>
                                 <td style=" font-size:20px">:</td>
                                 <td class="text-right" style=" font-size:20px"><?= number_format($dpp, 0, ',', '.') ?></td>
                                 <td style=" font-size:20px"></td>
@@ -224,7 +223,7 @@ use CodeIgniter\I18n\Time;
                 <div class="col-8">
                 </div>
                 <div class="col-4">
-                    <p><strong>Balikpapan, <?= Time::parse($ket['tgl_inv'])->toLocalizedString('dd MMMM yyyy') ?></strong></p><br><br><br><br>
+                    <p style=" font-size:20px"><strong>Balikpapan, <?= Time::parse($ket['tgl_inv'])->toLocalizedString('dd MMMM yyyy') ?></strong></p><br><br><br><br>
                     <p class="mt-5" style=" font-size:20px"><strong>Pranawingrum</strong></p>
                 </div>
             </div>
