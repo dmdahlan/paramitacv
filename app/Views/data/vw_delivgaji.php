@@ -28,6 +28,12 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-2">
+                                    <input id="tglawal" placeholder="Tgl awal sj kembali" class="form-control tanggall form-control-sm" type="text" autocomplete="off">
+                                </div>
+                                <div class="col-md-2">
+                                    <input id="tglakhir" placeholder="Tgl akhir sj kembali" class="form-control tanggall form-control-sm" type="text" autocomplete="off">
+                                </div>
+                                <div class="col-md-2">
                                     <select id="bk" class="form-control form-control-sm">
                                         <option value="">Status Surat jalan</option>
                                         <option value="BELUM KEMBALI">Belum Kembali</option>
@@ -44,7 +50,8 @@
                                 <div class="col-md-2">
                                     <input id="tglgaji" placeholder="Gaji Bulan" class="form-control tanggal form-control-sm" type="text" autocomplete="off">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
+                                    <button type="button" id="btn-filter" class="btn btn-info btn-sm">Cari</button>
                                     <button class="btn btn-info btn-sm" onclick="refresh()"> <span>Refresh</span></button>
                                 </div>
                             </div>
@@ -203,6 +210,8 @@
                     data.bk = $('#bk').val();
                     data.bg = $('#bg').val();
                     data.tglgaji = $('#tglgaji').val();
+                    data.tgl_awal = $('#tglawal').val();
+                    data.tgl_akhir = $('#tglakhir').val();
                 },
             },
             "columnDefs": [{
@@ -220,6 +229,9 @@
     $('#tglgaji').change(function() {
         table.ajax.reload();
     });
+    $('#btn-filter').click(function() { //button filter event click
+        table.ajax.reload(); //just reload table
+    });
 
     function reload_table() {
         table.ajax.reload(null, false);
@@ -229,6 +241,8 @@
         document.getElementById("bk").value = "";
         document.getElementById("bg").value = "";
         document.getElementById("tglgaji").value = "";
+        document.getElementById("tglawal").value = "";
+        document.getElementById("tglakhir").value = "";
         reload_table();
     }
 
@@ -395,6 +409,11 @@
         format: 'MM yyyy'
     }).on('change', function() {
         $('.datepicker').hide();
+    });
+    $('.tanggall').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "dd-mm-yyyy"
     });
 </script>
 <?= $this->endSection('content'); ?>

@@ -52,6 +52,9 @@ class DelivGaji extends Model
         if ($request->getVar('tglgaji')) {
             $this->dt->like('tgl_gaji',  date('Y-m', strtotime($request->getPost('tglgaji'))));
         }
+        if ($request->getVar('tgl_awal') && $request->getVar('tgl_akhir')) {
+            $this->dt->where('sj_kembali BETWEEN "' . date('Y-m-d', strtotime($request->getVar('tgl_awal'))) . '" AND "' . date('Y-m-d', strtotime($request->getVar('tgl_akhir'))) . '"');
+        }
         $i = 0;
         foreach ($this->column_search as $item) {
             if (@$_POST['search']['value']) {
