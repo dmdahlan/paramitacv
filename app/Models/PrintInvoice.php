@@ -13,7 +13,7 @@ class PrintInvoice extends Model
         return $this->db->table('deliv_order')
             ->join('master_unit', 'master_unit.idm_nopol = deliv_order.nopol_idm', 'left')
             ->join('master_dari', 'master_dari.idm_dari = deliv_order.dari_idm', 'left')
-            ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuan_idm', 'left')
+            ->join('master_tujuan', 'master_tujuan.idm_tujuan = deliv_order.tujuaninv_idm', 'left')
             ->join('deliv_invoice', 'deliv_invoice.deliv_idm = deliv_order.idm_deliv', 'left')
             ->where('no_inv', $keyword)
             ->where('deliv_order.deleted_at', null)
